@@ -61,6 +61,7 @@
     --bs-border-style:solid;
     --bs-border-color:#dee2e6;
     --bs-border-color-translucent:rgba(0, 0, 0, 0.175);
+    --bs-border-color-grd: linear-gradient(#e66465, #9198e5);
     --bs-border-radius:0.375rem;
     --bs-border-radius-sm:0.25rem;
     --bs-border-radius-lg:0.5rem;
