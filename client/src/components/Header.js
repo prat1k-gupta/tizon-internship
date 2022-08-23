@@ -3,18 +3,18 @@ import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { Link } from 'react-router-dom';
 export const Header = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect sticky="top" expand="sm" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand as={Link} exact to="/">
           Tizon
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav>
+        <Nav>
+        {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav"> */}
             <Nav.Link as={Link} exact to="/stats">
               Statistics
             </Nav.Link>
-            <NavDropdown title="UserName" id="collasible-nav-dropdown">
+            <NavDropdown title="UserName" >
               <NavDropdown.Item as={Link} exact to="/edit">
                 Edit Profile
               </NavDropdown.Item>
@@ -22,7 +22,7 @@ export const Header = () => {
               <NavDropdown.Item href="#logout">Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-        </Navbar.Collapse>
+        {/* </Navbar.Collapse> */}
       </Container>
     </Navbar>
   );
