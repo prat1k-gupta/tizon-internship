@@ -1,0 +1,12 @@
+.single-line{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card{
+    border-radius: 10px;
+}
+
+.bold-text{
+    font-weight: 500;
+}
