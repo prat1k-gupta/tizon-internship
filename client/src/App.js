@@ -11,8 +11,8 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
-        <Route exact path="/stats" element={<StatsPage />} />
-        <Route exact path="/edit" element={<EditProfilePage />} />
+        <Route path="/stats" element={<StatsPage />} />
+        <Route path="/edit" element={<EditProfilePage />} />
       </Routes>
       <Footer/>
     </>
