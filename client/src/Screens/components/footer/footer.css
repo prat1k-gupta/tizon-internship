@@ -1,0 +1,12 @@
+@import url("../../index.css");
+.footer{
+    width: 100%;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    margin-top: auto;
+}
+.copyright{
+    color: #707070;
+    text-align: center;
+}
