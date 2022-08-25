@@ -14,7 +14,6 @@ export const LoginPage = () => {
     const [success,setSuccess] = useState(""); 
     const [error,setError] = useState("")
     const [loading,setLoading] = useState(false);
-
     const handleChange = (e)=>{
         const {name,value} = e.target
         setLoginInfo(prevLogin=>({
@@ -32,9 +31,9 @@ export const LoginPage = () => {
         }
         setLoading(true);
         try{
-            const res = await axios.post("/api/users/login",loginInfo,config);
+            const res = await axios.post("/api/users/login",loginInfo,config); 
             if(res)
-                setSuccess("succesfully login!!")
+                setSuccess("welcome " + res.data.name)
             setLoading(false);
             
         }catch(err){
@@ -42,7 +41,6 @@ export const LoginPage = () => {
             setLoading(false);
         } 
     }
-
 
   return (
     <MainScreen title="Let's Sign you in">

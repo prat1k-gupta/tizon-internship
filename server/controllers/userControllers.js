@@ -46,7 +46,11 @@ exports.authUser = async (req,res)=>{
           expires: new Date(Date.now() + 25892000000),
           httpOnly: true,
         });
-        return res.status(201).json(currentUser); 
+        return res.status(201).json({
+            name: currentUser.name,
+            email: currentUser.email,
+            pic: currentUser.pic
+        }); 
     }else{
         return res.status(422).json({error: "Invalid Credentials"}); 
     }
