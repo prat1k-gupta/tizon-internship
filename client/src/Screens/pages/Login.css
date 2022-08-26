@@ -1,0 +1,16 @@
+@import url("../index.css");
+.box{
+    min-width: 300px;
+    height: auto;
+    padding: 10px;
+    margin: 20px;
+}
+.heading{
+    text-align: center;
+    margin-top: 45px;
+    font-weight: 700;
+}
+.signup-route{
+    margin-top: 20px;
+    text-align: center;
+}

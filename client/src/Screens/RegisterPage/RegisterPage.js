@@ -6,6 +6,10 @@ import { MainScreen } from "../MainScreen";
 import { ErrorMessage } from "../utils/ErrorMessage";
 import { LoadSpinner } from "../utils/LoadSpinner";
 import { SuccessMessage } from "../utils/SuccessMessage";
+
+import { ActiveButton, InputField } from "../components/main/Inputs";
+import "../components/main/Inputs.css";
+
 export const RegisterPage = () => {
   const [regInfo, setRegInfo] = useState({
     name: "",
@@ -59,10 +63,11 @@ export const RegisterPage = () => {
             <Form.Label>Name</Form.Label>
             <Form.Control name="name" type="text" onChange = {handleChange} value = {regInfo.name} placeholder="Enter Name" />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3 input"  controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control name="email" type="email" onChange = {handleChange} value = {regInfo.email} placeholder="Enter email" />
             </Form.Group>
+            
             <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control name="password" type="password" onChange = {handleChange} value = {regInfo.password} placeholder="Password" />
@@ -73,9 +78,10 @@ export const RegisterPage = () => {
             </Form.Group>
 
             <Form.Group className="mb-2" controlId="submitButton">
-            <Button variant="primary" type="submit">
+            {/* <Button variant="primary" type="submit">
                 Submit
-            </Button>
+            </Button> */}
+            <ActiveButton type="submit" value="Submit"/>
             </Form.Group>
             <Form.Text className="text-muted">
             Already have an Account?
