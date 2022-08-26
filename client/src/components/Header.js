@@ -8,10 +8,13 @@ export const Header = () => {
         <Navbar.Brand as={Link} exact to="/">
           Tizon
         </Navbar.Brand>
-        <Nav>
+        <Nav style={{display: "flex" , flexDirection: "row"}}>
         {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav"> */}
-            <Nav.Link as={Link} exact to="/stats">
+            <Nav.Link className="me-1" as={Link} exact to="/addbusiness">
+              Add Business
+            </Nav.Link>
+            <Nav.Link className="me-1" as={Link} exact to="/stats">
               Statistics
             </Nav.Link>
             <NavDropdown title="UserName" >
