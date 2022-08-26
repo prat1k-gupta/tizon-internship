@@ -1,5 +1,7 @@
 const user = require("../Models/userSchema");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const business = require("../Models/businessSchema");
 exports.registerUser = async (req, res) => {
   const { name, email, password, pic } = req.body;
 
@@ -41,10 +43,11 @@ exports.authUser = async (req, res) => {
   const isCorrect = await bcrypt.compare(password, currentUser.password);
 
   if (isCorrect) {
-    const token = currentUser.generateAuthToken();
+    const token = await currentUser.generateAuthToken();
+    console.log(token);
     res.cookie("jwtoken", token, {
       expires: new Date(Date.now() + 25892000000),
-      httpOnly: true,
+      httpOnly: false,
     });
     return res.status(201).json({
       name: currentUser.name,
@@ -58,8 +61,45 @@ exports.authUser = async (req, res) => {
 
 exports.addBusiness = async (req, res) => {
   //request token from cookies
-  const token = req;
-  console.log(token);
-  const object = req.body;
-  res.send(object);
+
+  const {
+    businessname,
+    description,
+    facebook,
+    instagram,
+    linkedin,
+    phone,
+    pics,
+    twitter,
+    website,
+    ytlinks,
+  } = req.body;
+  
+  let token = req.cookies.jwtoken;
+  const verify = await jwt.verify(token, process.env.SECRET_KEY);
+  const userid = verify._id;
+  const newBusiness = new business({
+    businessname,
+    description,
+    facebook,
+    instagram,
+    linkedin,
+    phone,
+    pics,
+    twitter,
+    website,
+    ytlinks,
+    userid,
+  });
+  try {
+    const saveBusiness = await newBusiness.save();
+    if (saveBusiness) {
+      return res.status(201).json({ message: "business is saved" });
+    }
+  } catch (err) {
+    console.log("this is error is from business");
+    console.log(err);
+  }
+
+  res.status(200).json({ message: "done" });
 };
