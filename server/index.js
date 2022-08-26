@@ -9,25 +9,30 @@ require("dotenv").config();
 const userRoutes = require("./routes/userRoutes")
 const userStats = require("./Models/statsSchema");
 const cookieParser = require("cookie-parser");
+const cors = require("cors")
 const app = express();
+
 connectDB();
 app.use(express.json());
 app.use(cookieParser()); 
+app.use(cors())
 app.get("/api/stats", (req, res) => {
   res.send(stats);
 });
 
-app.post("/api/users/addbusiness",(req,res)=>{
-  const object = req.body; 
-  console.log(object)
-  res.send(object); 
-})
+app.use("/api/users",userRoutes)
+
+// app.post("api/business/:id",(req,res)=>{
+//   //refrence token user id
+//   //find schema wit user id
+//   // 
+// })
+
 app.get("/api/stats/:id", (req, res) => {
   const statsCard = stats.find((s) => req.params.id == s.id);
   res.send(statsCard);
 });
 
-app.use("/api/users",userRoutes)
 
 
 

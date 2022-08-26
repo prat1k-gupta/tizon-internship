@@ -20,7 +20,8 @@ export const AddBusinessPage = () => {
     facebook: "",
     twitter: "",
     pics: [],
-    ytlinks: []
+    ytlinks: [],
+    id: ""
   });
   const [finalData,setFinalData] = useState(""); 
  
@@ -46,10 +47,15 @@ export const AddBusinessPage = () => {
         const config = {
             headers: {
                 "content-type": "application/json"
-            }
+            },
+            withCredentials: true
         }
         try{
-            const res = await axios.post("api/users/addbusiness",finalData,config)
+            const res = await axios.post(
+              "/api/users/business",
+              finalData,
+              config
+            );
             console.log(res.data);
         }catch(err){
             console.log(err); 

@@ -35,7 +35,7 @@ export const RegisterPage = () => {
     }
     setLoading(true); 
     try{
-        const res = await axios.post("api/users/register",regInfo,config)
+        const res = await axios.post("/api/users/register",regInfo,config)
         if(res){
             setSuccess(res.data.name + " you registered succesfully"); 
         }
