@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { MainScreen } from "../MainScreen";
 import { ErrorMessage } from "../utils/ErrorMessage";
 import { LoadSpinner } from "../utils/LoadSpinner";
 import { SuccessMessage } from "../utils/SuccessMessage";
 
-import { ActiveButton, InputField } from "../components/main/Inputs";
+import { ActiveButton } from "../components/main/Inputs";
 import "../components/main/Inputs.css";
 
 export const RegisterPage = () => {

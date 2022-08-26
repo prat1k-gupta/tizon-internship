@@ -1,39 +1,40 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-
-
 /* ------------------Sujeet Inputs------------------*/
-:root{
-  --black : #171717;
-  --grey : #353739;
-  --pink : #D327A8;
-  --purple : #B615DC;
-  --border :#1f1f1f;
+:root {
+  --black: #171717;
+  --grey: #353739;
+  --pink: #d327a8;
+  --purple: #b615dc;
+  --border: #1f1f1f;
 }
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: #fff;
   line-height: 1.5;
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
 }
-p,h4{
+p,
+h4 {
   margin-bottom: 0;
 }
-.app{
+.app {
   background-color: var(--black);
   width: 100%;
   min-height: 100vh;
