@@ -11,12 +11,12 @@ import { ActiveButton, InputField } from "../components/main/Inputs";
 import "../components/main/Inputs.css";
 
 export const RegisterPage = () => {
-  const [regInfo,setRegInfo] = useState({
+  const [regInfo, setRegInfo] = useState({
     name: "",
     email: "",
     password: "",
-    pic: ""
-  })  
+    pic: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+  });  
 
   const [success,setSuccess] = useState("");
   const [error,setError] = useState(""); 
@@ -48,7 +48,6 @@ export const RegisterPage = () => {
 
     }catch(err){
         setError(err.response.data.error); 
-        setTimeout()
         setLoading(false); 
     }
   }
@@ -56,22 +55,22 @@ export const RegisterPage = () => {
   return (
     <MainScreen title="Let's Sign you up">
       <div>
-        <Form onSubmit={handleSubmit}>
+        <Form autoComplete="off" onSubmit={handleSubmit}>
             {loading && <LoadSpinner/>}
             {error && <ErrorMessage error={error}/>}
             {success && <SuccessMessage message={success}/>}
             <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Name</Form.Label>
-            <Form.Control name="name" type="text" onChange = {handleChange} placeholder="Enter Name" />
+            <Form.Control name="name" type="text" onChange = {handleChange} value = {regInfo.name} placeholder="Enter Name" />
             </Form.Group>
             <Form.Group className="mb-3 input"  controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control name="email" type="email" onChange = {handleChange} placeholder="Enter email" />
+            <Form.Control name="email" type="email" onChange = {handleChange} value = {regInfo.email} placeholder="Enter email" />
             </Form.Group>
             
             <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control name="password" type="password" onChange = {handleChange} placeholder="Password" />
+            <Form.Control name="password" type="password" onChange = {handleChange} value = {regInfo.password} placeholder="Password" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Upload Image</Form.Label>

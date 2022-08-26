@@ -17,6 +17,11 @@ app.get("/api/stats", (req, res) => {
   res.send(stats);
 });
 
+app.post("/api/users/addbusiness",(req,res)=>{
+  const object = req.body; 
+  console.log(object)
+  res.send(object); 
+})
 app.get("/api/stats/:id", (req, res) => {
   const statsCard = stats.find((s) => req.params.id == s.id);
   res.send(statsCard);
@@ -45,6 +50,7 @@ app.post("/api/stats",(req,res)=>{
         throw err; 
     }
 })
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}!!`);
