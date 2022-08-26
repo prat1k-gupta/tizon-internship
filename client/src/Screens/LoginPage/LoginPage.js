@@ -27,7 +27,6 @@ export const LoginPage = () => {
             headers: {
                 "Content-type" : "application/json"
             }
-
         }
         setLoading(true);
         try{

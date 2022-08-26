@@ -1,10 +1,10 @@
 // import axios from "axios";
+import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MainScreen } from "../MainScreen";
 import { YtForm } from "./YtForm";
-import axios from "axios";
 // import { ErrorMessage } from "../utils/ErrorMessage";
 // import { LoadSpinner } from "../utils/LoadSpinner";
 // import { SuccessMessage } from "../utils/SuccessMessage";
@@ -20,43 +20,44 @@ export const AddBusinessPage = () => {
     facebook: "",
     twitter: "",
     pics: [],
-    ytlinks: []
+    ytlinks: [],
   });
-  const [finalData,setFinalData] = useState(""); 
- 
+  const [finalData, setFinalData] = useState("");
+
   const [ytLinks, setYtLinks] = useState([
     {
       link: "",
     },
   ]);
-  const handleChange = (e)=>{
-    const {name,value} = e.target; 
-    setFormData((prev)=>({
-        ...prev,
-        [name]: value
-    }))
-  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-  const handleSubmit = async (e)=>{
-        e.preventDefault();
-        const data = formData; 
-        formData.ytlinks = ytLinks; 
-        setFormData(data);
-        setFinalData(formData);
-        const config = {
-            headers: {
-                "content-type": "application/json"
-            }
-        }
-        try{
-            const res = await axios.post("api/users/addbusiness",finalData,config)
-            console.log(res.data);
-        }catch(err){
-            console.log(err); 
-        } 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = formData;
+    formData.ytlinks = ytLinks;
+    setFormData(data);
+    setFinalData(formData);
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+      withCredentials: true,
+    };
+    try {
+      const res = await axios.post("/api/users/business", finalData, config);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
     }
-    return (
-        <MainScreen title="Add Business Details">
+  };
+  return (
+    <MainScreen title="Add Business Details">
       <div>
         <Form autoComplete="off" onSubmit={handleSubmit}>
           {/* {loading && <LoadSpinner />} */}
@@ -106,7 +107,7 @@ export const AddBusinessPage = () => {
             <Form.Label>Instagram</Form.Label>
             <Form.Control
               name="instagram"
-              type="url"
+              type="text"
               onChange={handleChange}
               //   value={regInfo.password}
               placeholder="https://instagram.com/"
@@ -116,7 +117,7 @@ export const AddBusinessPage = () => {
             <Form.Label>Linkedin</Form.Label>
             <Form.Control
               name="linkedin"
-              type="url"
+              type="text"
               onChange={handleChange}
               //   value={regInfo.password}
               placeholder="https://linkedin.com/in/"
@@ -126,7 +127,7 @@ export const AddBusinessPage = () => {
             <Form.Label>Facebook</Form.Label>
             <Form.Control
               name="facebook"
-              type="url"
+              type="text"
               onChange={handleChange}
               //   value={regInfo.password}
               placeholder="https://facebook.com/"
@@ -136,7 +137,7 @@ export const AddBusinessPage = () => {
             <Form.Label>Twitter</Form.Label>
             <Form.Control
               name="twitter"
-              type="url"
+              type="text"
               onChange={handleChange}
               //   value={regInfo.password}
               placeholder="https://twitter.com/"
