@@ -44,7 +44,6 @@ exports.authUser = async (req, res) => {
 
   if (isCorrect) {
     const token = await currentUser.generateAuthToken();
-    console.log(token);
     res.cookie("jwtoken", token, {
       expires: new Date(Date.now() + 25892000000),
       httpOnly: false,
@@ -74,7 +73,7 @@ exports.addBusiness = async (req, res) => {
     website,
     ytlinks,
   } = req.body;
-  
+
   let token = req.cookies.jwtoken;
   const verify = await jwt.verify(token, process.env.SECRET_KEY);
   const userid = verify._id;
