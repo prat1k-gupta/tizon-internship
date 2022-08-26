@@ -1,8 +1,8 @@
-@import url("../../index.css");
+@import url("../../../index.css");
 .input{
     margin-top: 10px;
 }
-.inputField{
+#inputField{
     width: 100%;
     height: 45px;
     padding: 0.5rem;
@@ -15,7 +15,7 @@
     outline: none;
     font-size: medium;
 }
-.inputField:focus{
+#inputField:focus{
     background-image: linear-gradient(var(--grey), var(--grey)), 
     linear-gradient(to right, var(--pink), var(--purple));
 }

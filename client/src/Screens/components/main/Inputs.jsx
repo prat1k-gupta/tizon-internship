@@ -9,7 +9,7 @@ function InputField(props){
                 type={props.inputType} 
                 name={props.label} 
                 placeholder={props.placeholder}
-                className="inputField" 
+                id="inputField" 
             />
         </div>
     );
@@ -17,11 +17,11 @@ function InputField(props){
 
 function ActiveButton(props){
     return <div className="button">
-            <input 
-                type={props.inputType} 
-                value={props.value} 
+            <button 
                 className="activeButtonInput" 
-            />        
+                type={props.inputType} >
+                    {props.value} 
+            </button>        
         </div>
 }
 function Button(props){
