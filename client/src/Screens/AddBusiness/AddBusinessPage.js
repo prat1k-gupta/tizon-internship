@@ -176,22 +176,12 @@ export const AddBusinessPage = () => {
                   addMore={setYtLinks}
                 />
               ))}
-              <Form.Group className="mb-2" controlId="submitButton">
+              {/* <Form.Group className="mb-2" controlId="submitButton">
                 <Button variant="primary" className="mt-2" type="submit">
                   Submit
                 </Button>
-<<<<<<< Updated upstream
-              </Form.Group>
-              <Form.Text className="text-muted">
-                Already have an Account?
-                <Link to="/login" style={{ fontWeight: "bold" }}>
-                  login Now
-                </Link>
-              </Form.Text>
-=======
               </Form.Group> */}
               <ActiveButton type="submit" value="Submit" />
->>>>>>> Stashed changes
             </Form>
           </div>
         </MainScreen>
