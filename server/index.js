@@ -66,6 +66,11 @@ app.post("/api/user/:id", async (req, res) => {
 
 app.use("/api/stats",statsRoutes);
 
+app.get("/api/logout",(req,res)=>{
+  res.clearCookie('jwtoken',{path:'/'}); 
+  res.status(200).json({message: "logged out!!"})
+})
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}!!`);

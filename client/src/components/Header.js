@@ -1,7 +1,20 @@
+import axios from 'axios';
 import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export const Header = () => {
+  const navigate = useNavigate(); 
+  const handleLogout = async ()=>{
+    try{
+      const res = await axios.get('/api/logout');
+      if(res){
+        navigate("/")
+      }
+    }catch(err){
+      console.log(err); 
+    }
+    
+  }
   return (
     <Navbar collapseOnSelect sticky="top" expand="sm" bg="dark" variant="dark">
       <Container>
@@ -22,7 +35,7 @@ export const Header = () => {
                 Edit Profile
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#logout">Logout</NavDropdown.Item>
+              <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         {/* </Navbar.Collapse> */}

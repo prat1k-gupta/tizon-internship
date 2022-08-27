@@ -14,8 +14,7 @@ export const StatsPage = () => {
       const res = await axios.get("/api/stats");
       setStats(res.data);
     } catch (err) {
-      window.alert(err.response.data.error);
-      navigate("/");
+      navigate("/login");
     }
   };
   useEffect(() => {
