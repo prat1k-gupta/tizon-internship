@@ -76,6 +76,7 @@ exports.addBusiness = async (req, res) => {
 
   let token = req.cookies.jwtoken;
   const verify = await jwt.verify(token, process.env.SECRET_KEY);
+  
   const userid = verify._id;
   const newBusiness = new business({
     businessname,
