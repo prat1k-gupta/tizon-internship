@@ -1,7 +1,8 @@
 // import axios from "axios";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import { ActiveButton } from "../components/main/Inputs";
 import { Link, useNavigate } from "react-router-dom";
 import { MainScreen } from "../MainScreen";
 import { YtForm } from "./YtForm";
@@ -173,11 +174,12 @@ export const AddBusinessPage = () => {
               addMore={setYtLinks}
             />
           ))}
-          <Form.Group className="mb-2" controlId="submitButton">
+          {/* <Form.Group className="mb-2" controlId="submitButton">
             <Button variant="primary" className="mt-2" type="submit">
               Submit
             </Button>
-          </Form.Group>
+          </Form.Group> */}
+          <ActiveButton type="submit" value="Submit"/>
           <Form.Text className="text-muted">
             Already have an Account?
             <Link to="/login" style={{ fontWeight: "bold" }}>
