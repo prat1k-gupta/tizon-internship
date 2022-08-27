@@ -181,7 +181,7 @@ export const AddBusinessPage = () => {
                   Submit
                 </Button>
               </Form.Group> */}
-              <ActiveButton type="submit" value="Submit" />
+              <ActiveButton type="submit" value="Submit"/>
             </Form>
           </div>
         </MainScreen>
