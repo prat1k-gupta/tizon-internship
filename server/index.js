@@ -23,36 +23,21 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
-app.post("/api/connect", async (req, res) => {
-  const { name, businessname, website, phone, email, instagram, userid } =
-    req.body;
 
-  const newStats = new userStats({
-    name,
-    businessname,
-    website,
-    phone,
-    email,
-    instagram,
-    userid,
-  });
 
-  try {
-    const saveStats = newStats.save();
-    if (saveStats) {
-      return res.status(201).json({ message: "Thanks for connecting" });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
-
+//user routes
 app.use("/api/users", userRoutes);
+//stats routes
+app.use("/api/stats",statsRoutes);
 
+//to check authorization
 app.use('/api/authorized',authenticate,(req,res)=>{
   res.status(200).json({message: "authenticated"});
 })
-app.post("/api/user/:id", async (req, res) => {
+
+
+// tap card api 
+app.get("/api/user/:id", async (req, res) => {
   const id = req.params.id;
   var findBusinessProfile = await business
     .findOne({ _id: id })
@@ -64,13 +49,14 @@ app.post("/api/user/:id", async (req, res) => {
   res.send(findBusinessProfile);
 });
 
-app.use("/api/stats",statsRoutes);
-
+//logout api 
 app.get("/api/logout",(req,res)=>{
   res.clearCookie('jwtoken',{path:'/'}); 
   res.status(200).json({message: "logged out!!"})
 })
 
+
+//server 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}!!`);
