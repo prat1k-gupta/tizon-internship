@@ -24,13 +24,13 @@ export const Header = () => {
         <Nav style={{display: "flex" , flexDirection: "row"}}>
         {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav"> */}
-            <Nav.Link className="me-1" as={Link} exact to="/addbusiness">
+            <Nav.Link className="me-3" as={Link} exact to="/addbusiness">
               Add Business
             </Nav.Link>
-            <Nav.Link className="me-1" as={Link} exact to="/stats">
-              Statistics
+            <Nav.Link className="me-3" as={Link} exact to="/stats">
+              Stats
             </Nav.Link>
-            <NavDropdown title="UserName" >
+            <NavDropdown title="User" >
               <NavDropdown.Item as={Link} exact to="/edit">
                 Edit Profile
               </NavDropdown.Item>
