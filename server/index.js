@@ -8,12 +8,14 @@ const connectDB = require("./config/connectDB");
 
 require("dotenv").config();
 // console.log(connectDB);
+const statsRoutes = require('./routes/statsRoutes')
 const userRoutes = require("./routes/userRoutes");
 const userStats = require("./Models/statsSchema");
 const business = require("./Models/businessSchema");
 
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const authenticate = require("./middlewares/authenticate");
 const app = express();
 
 connectDB();
@@ -47,6 +49,9 @@ app.post("/api/connect", async (req, res) => {
 
 app.use("/api/users", userRoutes);
 
+app.use('/api/authorized',authenticate,(req,res)=>{
+  res.status(200).json({message: "authenticated"});
+})
 app.post("/api/user/:id", async (req, res) => {
   const id = req.params.id;
   var findBusinessProfile = await business
@@ -59,12 +64,7 @@ app.post("/api/user/:id", async (req, res) => {
   res.send(findBusinessProfile);
 });
 
-app.get("/api/stats", async (req, res) => {
-  const token = req.cookies.jwtoken;
-  const id = await jwt.verify(token, process.env.SECRET_KEY); 
-  const connectedPeople = await userStats.find({ userid: id });
-  res.send(connectedPeople);
-});
+app.use("/api/stats",statsRoutes);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

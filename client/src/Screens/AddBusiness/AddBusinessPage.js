@@ -1,8 +1,8 @@
 // import axios from "axios";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MainScreen } from "../MainScreen";
 import { YtForm } from "./YtForm";
 // import { ErrorMessage } from "../utils/ErrorMessage";
@@ -10,6 +10,18 @@ import { YtForm } from "./YtForm";
 // import { SuccessMessage } from "../utils/SuccessMessage";
 
 export const AddBusinessPage = () => {
+  const navigate = useNavigate(); 
+  const isAuthenticated = async () => {
+    try {
+      const res = await axios.get("/api/authorized");
+    } catch (err) {
+      window.alert(err.response.data.error);
+      navigate("/");
+    }
+  };
+  useEffect(() => {
+    isAuthenticated();
+  }, []);
   const [formData, setFormData] = useState({
     businessname: "",
     website: "",

@@ -4,13 +4,19 @@ import { Container } from "react-bootstrap";
 import { MainScreen } from "../MainScreen";
 import { StatsCard } from "./StatsCard";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 // import stats from '../../data/stats';
 export const StatsPage = () => {
   const [stats, setStats] = useState([]);
-
+  const navigate = useNavigate();
   const fetchStats = async () => {
-    const res = await axios.get("/api/stats");
-    setStats(res.data);
+    try {
+      const res = await axios.get("/api/stats");
+      setStats(res.data);
+    } catch (err) {
+      window.alert(err.response.data.error);
+      navigate("/");
+    }
   };
   useEffect(() => {
     fetchStats();
