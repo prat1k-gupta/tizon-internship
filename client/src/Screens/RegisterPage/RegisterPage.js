@@ -81,7 +81,7 @@ export const RegisterPage = () => {
             {/* <Button variant="primary" type="submit">
                 Submit
             </Button> */}
-            <ActiveButton type="submit" value="Submit"/>
+            <ActiveButton type="submit" value="Sign up"/>
             </Form.Group>
             <Form.Text className="text-muted">
             Already have an Account?
