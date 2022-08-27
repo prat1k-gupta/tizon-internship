@@ -56,7 +56,7 @@ app.get("/api/logout",(req,res)=>{
 })
 
 
-//server 
+//server running here
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}!!`);
