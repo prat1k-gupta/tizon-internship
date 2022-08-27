@@ -209,11 +209,11 @@ sup{
     top:-.5em
 }
 a{
-    color:var(--bs-link-color);
+    color:var(--pink);
     text-decoration: none;
 }
 a:hover{
-    color:var(--bs-link-hover-color); 
+    color:var(--purple); 
     text-decoration: none;
 }
 a:not([href]):not([class]),a:not([href]):not([class]):hover{
@@ -1723,6 +1723,7 @@ progress{
 }
 .form-text{
     margin-top:.25rem;
+    margin-left: 12px;
     font-size:.875em;
     color:#888
 }
@@ -1765,7 +1766,7 @@ progress{
 
     /* changed */
     height: auto;
-    padding: 8px 16px 8px 16px;
+    padding: 8px 16px 8px 14px;
     background-image: linear-gradient(var(--grey), var(--grey)), 
     linear-gradient(to right, var(--pink), var(--purple));
     /* --------- */
@@ -1827,7 +1828,7 @@ progress{
     border-inline-end-width:1px;
 
     /* changed */
-    border-radius:10px;
+    border-radius:7px;
     /* ---------- */
     transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
 }
@@ -1836,11 +1837,27 @@ progress{
     display: block;
     width: 100%;
     min-height: 45px;
+    color: #fff;
     background: linear-gradient(to right, var(--purple), var(--pink));
     border-radius: 10px;
     outline: none;
     border: none;
     font-size: medium;
+}
+.ButtonInput{
+    display: block;
+    width: 100%;
+    color: #fff;
+    min-height: 45px;
+    background: var(--grey);
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid var(--purple);
+    font-size: medium;
+}
+.ButtonInput:hover{
+    background-color: linear-gradient(var(--grey), var(--grey)), 
+    linear-gradient(to right, var(--pink), var(--purple));
 }
 /* ------------- */
 
@@ -2514,15 +2531,27 @@ textarea.form-control-lg{
     color:var(--bs-btn-color);
     text-align:center;
     text-decoration:none;
-    vertical-align:middle;
+    /* vertical-align:middle; */
     cursor:pointer;
     -webkit-user-select:none;
     -moz-user-select:none;
     user-select:none;
-    border:var(--bs-btn-border-width) solid var(--bs-btn-border-color);
-    border-radius:var(--bs-btn-border-radius);
-    background-color:var(--bs-btn-bg);
-    transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+    /* border:var(--bs-btn-border-width) solid var(--bs-btn-border-color); */
+    /* border-radius:var(--bs-btn-border-radius); */
+    /* background-color:var(--bs-btn-bg); */
+    transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+
+    /* changes */
+    /* display: block; */
+    width: 100%;
+    min-height: 45px;
+    background: var(--grey);
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid var(--purple);
+
+    /* ----------- */
 }
 @media (prefers-reduced-motion:reduce){
     .btn{
@@ -2531,20 +2560,24 @@ textarea.form-control-lg{
 }
 .btn:hover{
     color:var(--bs-btn-hover-color);
-    background-color:var(--bs-btn-hover-bg);
-    border-color:var(--bs-btn-hover-border-color)
+    /* background-color:var(--bs-btn-hover-bg); */
+    /* border-color:var(--bs-btn-hover-border-color); */
+
+    /* changes */
+    background: linear-gradient(to right, var(--pink), var(--purple));
+    /* ----------- */
 }
 .btn-check:focus+.btn,.btn:focus{
     color:var(--bs-btn-hover-color);
     background-color:var(--bs-btn-hover-bg);
-    border-color:var(--bs-btn-hover-border-color);
+    /* border-color:var(--bs-btn-hover-border-color); */
     outline:0;
     box-shadow:var(--bs-btn-focus-box-shadow)
 }
 .btn-check:active+.btn,.btn-check:checked+.btn,.btn.active,.btn.show,.btn:active{
     color:var(--bs-btn-active-color);
     background-color:var(--bs-btn-active-bg);
-    border-color:var(--bs-btn-active-border-color)
+    /* border-color:var(--bs-btn-active-border-color) */
 }
 .btn-check:active+.btn:focus,.btn-check:checked+.btn:focus,.btn.active:focus,.btn.show:focus,.btn:active:focus{
     box-shadow:var(--bs-btn-focus-box-shadow)
@@ -3395,7 +3428,7 @@ textarea.form-control-lg{
     font-size:var(--bs-navbar-brand-font-size);
     color:var(--bs-navbar-brand-color);
     text-decoration:none;
-    white-space:nowrap
+    white-space:nowrap;
 }
 .navbar-brand:focus,.navbar-brand:hover{
     color:var(--bs-navbar-brand-hover-color);
@@ -3410,9 +3443,13 @@ textarea.form-control-lg{
     --bs-nav-link-disabled-color:var(--bs-navbar-disabled-color);
     display:flex;
     flex-direction:column;
+    align-content: space-between;
+    /* width: 75%; */
+
     padding-left:0;
     margin-bottom:0;
-    list-style:none
+    list-style:none;
+
 }
 .navbar-nav .nav-link.active,.navbar-nav .show>.nav-link{
     color:var(--bs-navbar-active-color)

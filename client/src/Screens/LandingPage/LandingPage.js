@@ -15,7 +15,7 @@ function LandingPage(){
             </div>
             <div className="buttonContainer">
               <Link to="/login">
-                <Button size="lg" className="landingbutton">
+                <Button size="lg" className="activeButtonInput">
                   Login
                 </Button>
               </Link>
@@ -23,7 +23,7 @@ function LandingPage(){
                 <Button
                   variant="outline-primary"
                   size="lg"
-                  className="landingbutton"
+                  className="ButtonInput"
                 >
                   Signup
                 </Button>

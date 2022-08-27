@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import {ActiveButton} from '../components/main/Inputs';
 import { Link } from 'react-router-dom';
 import { MainScreen } from '../MainScreen'
 import axios from "axios"
@@ -59,11 +60,12 @@ export const LoginPage = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control name="password" onChange={handleChange} type="password" placeholder="Password" />
         </Form.Group>
-        <Form.Group className="mb-2" controlId="submitButton">
+        {/* <Form.Group className="mb-2" controlId="submitButton">
           <Button variant="primary" type="submit">
             Submit
           </Button>
-        </Form.Group>
+        </Form.Group> */}
+        <ActiveButton type="submit" value="Log in"/>
         <Form.Text className="text-muted">
           Don't Have an Account? <Link to="/register" style={{fontWeight: "bold"}}>Register Now</Link>
         </Form.Text>

@@ -21,11 +21,12 @@
 }
 
 .button{
-    margin: 50px 0px 20px 0px;
+    margin: 30px 0px 20px 0px;
 }
 .activeButtonInput{
     display: block;
-    width: 100%;
+    min-width: 150px;
+    color: #fff;
     min-height: 45px;
     background: linear-gradient(to right, var(--purple), var(--pink));
     border-radius: 10px;
@@ -35,7 +36,8 @@
 }
 .ButtonInput{
     display: block;
-    width: 100%;
+    min-width: 150px;
+    color: #fff;
     min-height: 45px;
     background: var(--grey);
     border-radius: 10px;

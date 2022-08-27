@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./Screens/components/footer/Footer";
+import Footer from "./components/footer/Footer";
 import { Header } from "./components/Header";
 import { EditProfilePage } from "./Screens/EditProfile/EditProfilePage";
 import LandingPage from "./Screens/LandingPage/LandingPage";
