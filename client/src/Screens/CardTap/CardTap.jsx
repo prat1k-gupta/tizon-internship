@@ -1,7 +1,12 @@
+import { ScrollArea } from "../components/tap/ScrollArea";
 import { StaticImage } from "../components/tap/StaticImage";
 
 const CardTap = () => (
-    <StaticImage />
+    <>
+        <StaticImage />
+        <ScrollArea />
+    </>
+    
 );
 
 export {CardTap}; 

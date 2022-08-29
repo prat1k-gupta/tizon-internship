@@ -1,6 +1,7 @@
 .image{
-    /* margin-top: 45px; */
     position: relative;
-    height: 100vh;
+    min-height: 360px;
     width: 100%;
+    object-fit: cover;
+    background-position: center;
 }

@@ -1,0 +1,11 @@
+.titleImg{
+    width: 100%;
+    height: 200px;
+    background-color: aliceblue;
+}
+.titleImg .logo{
+    border: 2px solid red;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}

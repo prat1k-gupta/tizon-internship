@@ -1,11 +1,9 @@
 import "./StaticImage.css";
 import { Parallax } from "react-parallax";
-import { ScrollArea } from "./ScrollArea";
-const bg = "https://africa.visa.com/dam/VCOM/regional/cemea/genericafrica/global-elements/cards/classic.jpg";
+const bg = "https://assets.materialup.com/uploads/c59092ae-0d48-499d-9959-6d96acd73c62/preview.png";
 
 const StaticImage = () => (
-    <Parallax className="image" bgImage={bg} bgImageAlt="the cat" strength={200}>
-        <ScrollArea />
+    <Parallax className="image" bgImage={bg} bgImageAlt="the cat" strength={400}>
     </Parallax>
 );
 
