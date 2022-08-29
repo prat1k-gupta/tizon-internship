@@ -1,9 +1,9 @@
 // import axios from "axios";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { ActiveButton } from "../components/main/Inputs";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MainScreen } from "../MainScreen";
 import { YtForm } from "./YtForm";
 // import { ErrorMessage } from "../utils/ErrorMessage";
@@ -11,13 +11,13 @@ import { YtForm } from "./YtForm";
 // import { SuccessMessage } from "../utils/SuccessMessage";
 
 export const AddBusinessPage = () => {
-  const navigate = useNavigate(); 
-  const [authorized,setAuthorized]=useState(false)
+  const navigate = useNavigate();
+  const [authorized, setAuthorized] = useState(false);
   const isAuthenticated = async () => {
     try {
       const res = await axios.get("/api/authorized");
-      if(res){
-        setAuthorized(true)
+      if (res) {
+        setAuthorized(true);
       }
     } catch (err) {
       navigate("/login");
@@ -51,9 +51,11 @@ export const AddBusinessPage = () => {
     }));
   };
 
+  // setFormData({...formData,ytlinks: ytLinks});
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormData({...formData, ytlinks: ytLinks})
+    const finalData = { ...formData, ytlinks: ytLinks };
+    console.log(finalData);
     const config = {
       headers: {
         "Content-type": "application/json",
@@ -61,7 +63,7 @@ export const AddBusinessPage = () => {
       withCredentials: true,
     };
     try {
-      const res = await axios.post("/api/users/business", formData, config);
+      const res = await axios.post("/api/users/business", finalData, config);
       console.log(res.data);
     } catch (err) {
       console.log(err);
