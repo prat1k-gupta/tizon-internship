@@ -7,6 +7,7 @@ function ScrollArea(){
     return (
         <div className="scrollArea">
             <TitleImg />
+            <hr />
             <TabGroup />
         </div>
     );

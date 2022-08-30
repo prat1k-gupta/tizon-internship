@@ -16,4 +16,4 @@ const TitleImg = ()=>{
     );
 }
 
-export {TitleImg};
+export { TitleImg };

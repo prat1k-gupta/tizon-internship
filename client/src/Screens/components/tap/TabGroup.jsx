@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Gallery } from "./Gallery";
 import "./TabGroup.css";
 
 const TabGroup = ()=>{
     const [toggleState, setToggleState] = useState(1);
     const toggleTab = (index)=>{
         setToggleState(index)
-        console.log(index);
+        // console.log(index);
     }
 
     return(
@@ -34,7 +35,7 @@ const TabGroup = ()=>{
                 <div 
                     className={toggleState === 1 ? "content active-content" : "content"}
                 >
-                    Photos
+                    <Gallery />
                 </div>
                 <div 
                     className={toggleState === 2? "content active-content" : "content"}
