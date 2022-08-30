@@ -9,6 +9,7 @@
     --pink : #D327A8;
     --purple : #B615DC;
     --border :#1f1f1f;
+    --sujeetGradient: linear-gradient(var(--pink),var(--purple))
 
 
     --bs-blue:#375a7f;
@@ -4359,7 +4360,7 @@ textarea.form-control-lg{
     color:var(--bs-progress-bar-color);
     text-align:center;
     white-space:nowrap;
-    background-color:var(--bs-progress-bar-bg);
+    background-color:var(--pink);
     transition:var(--bs-progress-bar-transition)
 }
 @media (prefers-reduced-motion:reduce){
@@ -6284,7 +6285,10 @@ textarea.form-control-lg{
     position:-webkit-sticky;
     position:sticky;
     top:0;
-    z-index:1020
+    z-index:1020;
+    /* changed */
+    box-shadow: 0px 3px 6px 1px #00000033;
+    /* --------------- */
 }
 .sticky-bottom{
     position:-webkit-sticky;

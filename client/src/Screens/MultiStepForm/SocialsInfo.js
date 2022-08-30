@@ -17,7 +17,7 @@ export const SocialsInfo = ({formData,setFormData}) => {
             name="instagram"
             type="text"
             onChange={handleChange}
-            //   value={regInfo.password}
+              value={formData.instagram}
             placeholder="https://instagram.com/"
             />
         </Form.Group>
@@ -27,7 +27,7 @@ export const SocialsInfo = ({formData,setFormData}) => {
             name="linkedin"
             type="text"
             onChange={handleChange}
-            //   value={regInfo.password}
+              value={formData.linkedin}
             placeholder="https://linkedin.com/in/"
             />
         </Form.Group>
@@ -37,7 +37,7 @@ export const SocialsInfo = ({formData,setFormData}) => {
             name="facebook"
             type="text"
             onChange={handleChange}
-            //   value={regInfo.password}
+              value={formData.facebook}
             placeholder="https://facebook.com/"
             />
         </Form.Group>
@@ -47,7 +47,7 @@ export const SocialsInfo = ({formData,setFormData}) => {
             name="twitter"
             type="text"
             onChange={handleChange}
-            //   value={regInfo.password}
+              value={formData.twitter}
             placeholder="https://twitter.com/"
             />
         </Form.Group>

@@ -1,0 +1,26 @@
+.titleImg{
+    width: 100%;
+    height: auto;
+    /* background-color: rgb(97, 97, 97); */
+    display: flex;
+    justify-content: space-evenly;
+    word-wrap: break-word;
+    align-items: center;
+}
+.titleImg .logo{
+    border: 2px solid var(--pink);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+}
+.titleImg .logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.titleImg .titleDes{
+    width: 70%;
+    padding: 10px;
+}
