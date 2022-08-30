@@ -6284,7 +6284,10 @@ textarea.form-control-lg{
     position:-webkit-sticky;
     position:sticky;
     top:0;
-    z-index:1020
+    z-index:1020;
+    /* changed */
+    box-shadow: 0px 3px 6px 1px #00000033;
+    /* --------------- */
 }
 .sticky-bottom{
     position:-webkit-sticky;
