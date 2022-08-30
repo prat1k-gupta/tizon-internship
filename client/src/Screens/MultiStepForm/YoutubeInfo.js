@@ -4,7 +4,7 @@ import { FormTitle } from './FormTitle'
 
 export const YoutubeInfo = ({ytLinks,setYtLinks}) => {
   return (
-    <FormTitle>
+    <FormTitle title="Add Youtube Links">
       {ytLinks.map((link, index) => (
         <YtForm
           key={index}

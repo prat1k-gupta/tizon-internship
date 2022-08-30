@@ -9,7 +9,7 @@ export const FormTitle = ({title,children}) => {
           <div className="page">
             {title && (
               <>
-                <h1 className="heading">{title}</h1>
+                <h1 style={{fontSize: "25px"}}>{title}</h1>
                 <hr />
               </>
             )}

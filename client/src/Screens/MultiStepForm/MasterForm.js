@@ -59,7 +59,7 @@ export const MasterForm = () => {
     <MainScreen title="AddBusiness">
       <Container>
         <>
-          <div className="mb-2">
+          <div className="mb-4">
             <ProgressBar striped now={step} label={`${step}%`} />
           </div>
           <div>
@@ -83,12 +83,12 @@ export const MasterForm = () => {
                 ),
               }[step]
             }
-            <div className="d-flex justify-content-around px-5 mt-5">
+            <div className="d-flex justify-content-evenly px-5 mt-3">
               {step > 20 ? (
                 <Button
                   variant="outline-primary"
                   size="lg"
-                  className="ButtonInput"
+                  className="ButtonInput me-2 "
                   onClick={prevStep}
                 >
                   Back
@@ -108,7 +108,7 @@ export const MasterForm = () => {
                   className="activeButtonInput"
                   onClick={handleSubmit}
                 >
-                    Submit
+                  Submit
                 </Button>
               )}
             </div>
