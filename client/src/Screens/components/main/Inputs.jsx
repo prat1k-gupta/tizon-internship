@@ -17,9 +17,7 @@ function InputField(props){
 
 function ActiveButton(props){
     return <div className="button">
-            <button 
-                className="activeButtonInput" 
-                type={props.inputType} >
+            <button className="activeButtonInput" type={props.inputType} >
                     {props.value} 
             </button>        
         </div>

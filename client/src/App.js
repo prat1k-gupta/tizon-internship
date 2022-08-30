@@ -7,7 +7,8 @@ import LandingPage from "./Screens/LandingPage/LandingPage";
 import { LoginPage } from "./Screens/LoginPage/LoginPage";
 import { RegisterPage } from "./Screens/RegisterPage/RegisterPage";
 import { StatsPage } from "./Screens/StatisticsPage/StatsPage";
-import { AddBusinessPage } from "./Screens/AddBusiness/AddBusinessPage";
+// import { AddBusinessPage } from "./Screens/AddBusiness/AddBusinessPage";
+import { MasterForm } from "./Screens/MultiStepForm/MasterForm";
 import { CardTap } from "./Screens/CardTap/CardTap";
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Route path="/edit" element={<EditProfilePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/addbusiness" element={<AddBusinessPage />} />
+        <Route path="/addbusiness" element={<MasterForm />} />
+        <Route path="/business" element={<MasterForm />} />
         <Route path="/card" element={<CardTap />} />
       </Routes>
       <Footer />
