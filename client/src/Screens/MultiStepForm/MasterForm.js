@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Container, ProgressBar } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 // import { ActiveButton} from '../components/main/Inputs';
 import { MainScreen } from '../MainScreen'
 import { ConfirmSubmission } from './ConfirmSubmission';
@@ -9,6 +10,22 @@ import { SocialsInfo } from './SocialsInfo';
 import { UploadInfo } from './UploadInfo';
 import { YoutubeInfo } from './YoutubeInfo';
 export const MasterForm = () => {
+    const navigate = useNavigate();
+    const [authorized, setAuthorized] = useState(false);
+    const isAuthenticated = async () => {
+      try {
+        const res = await axios.get("/api/authorized");
+        if (res) {
+          setAuthorized(true);
+        }
+        } catch (err) {
+            navigate("/login");
+        }
+    };
+    useEffect(() => {
+      isAuthenticated();
+    }, [authorized]);
+
     const [formData, setFormData] = useState({
       businessname: "",
       website: "",
