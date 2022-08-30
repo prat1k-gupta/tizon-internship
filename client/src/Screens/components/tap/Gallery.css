@@ -32,8 +32,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 45px;
     top: 0;
     left: 0;
+    margin-top: 35px;
     background-color: #000000;
     visibility: hidden;
     opacity: 0;
@@ -56,4 +58,18 @@
     box-sizing: border-box;
     padding: 20px 0 20px;
     margin: 0 auto;
+    border: 5px solid #fff;
+}
+.model.open .closeIcon{
+    position: fixed;
+    top: 35px;
+    right: 15px;
+    width: 2rem;
+    height: 2rem;
+    padding: 2px;
+    color: #fff;
+    background-color: #00000000;
+    cursor: pointer;
+    font-size: 50px;
+    transform: rotateZ(45deg);
 }
