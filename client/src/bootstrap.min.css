@@ -1932,7 +1932,7 @@ progress{
     margin-inline-end:1rem
 }
 textarea.form-control{
-    min-height:calc(1.5em + .75rem + 2px)
+    min-height:calc(1.5em + .75rem + 100px)
 }
 textarea.form-control-sm{
     min-height:calc(1.5em + .5rem + 2px)
