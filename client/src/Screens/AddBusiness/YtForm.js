@@ -33,11 +33,10 @@ export const YtForm = ({size,index,list,addMore}) => {
         <Form.Control
           name="link"
           type="url"
-            onChange={(e)=>{handleLinkChange(e,index)}}
-            // value={link}
+          onChange={(e)=>{handleLinkChange(e,index)}}
+          value={list[index].link}
           placeholder="https://youtube.com/"
           className="mb-2"
-
         />
         {size > 1 && <AiOutlineDelete size={30} onClick = {()=>{handleRemove(index)}} />}
       </div>

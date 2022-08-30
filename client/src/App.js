@@ -8,6 +8,7 @@ import { LoginPage } from "./Screens/LoginPage/LoginPage";
 import { RegisterPage } from "./Screens/RegisterPage/RegisterPage";
 import { StatsPage } from "./Screens/StatisticsPage/StatsPage";
 import { AddBusinessPage } from "./Screens/AddBusiness/AddBusinessPage";
+import { MasterForm } from "./Screens/MultiStepForm/MasterForm";
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/addbusiness" element={<AddBusinessPage />} />
+        <Route path="/business" element={<MasterForm />} />
       </Routes>
       <Footer />
     </>
