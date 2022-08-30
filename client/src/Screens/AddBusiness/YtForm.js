@@ -41,7 +41,7 @@ export const YtForm = ({size,index,list,addMore}) => {
         {size > 1 && <AiOutlineDelete size={30} onClick = {()=>{handleRemove(index)}} />}
       </div>
       {size - 1 === index && size < 4 && (
-        <Button className="ButtonInput" onClick={handleAdd}>
+        <Button className="ButtonInput mt-3" onClick={handleAdd}>
           Add More
         </Button>
       )}
