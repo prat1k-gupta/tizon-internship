@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { Form } from 'react-bootstrap';
 import {ActiveButton} from '../components/main/Inputs';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MainScreen } from '../MainScreen'
 import axios from "axios"
 import { ErrorMessage } from '../utils/ErrorMessage';
 import { LoadSpinner } from '../utils/LoadSpinner';
 import { SuccessMessage } from '../utils/SuccessMessage';
+import { useAuth } from '../../AuthContext/AuthContext';
 export const LoginPage = () => {
+    const {setAuth} = useAuth(); 
+    const navigate = useNavigate();
     const [loginInfo,setLoginInfo] = useState({
         email: "",
         password: ""
@@ -32,8 +35,11 @@ export const LoginPage = () => {
         setLoading(true);
         try{
             const res = await axios.post("/api/users/login",loginInfo,config); 
-            if(res)
-                setSuccess("welcome " + res.data.name)
+            if(res){
+              setSuccess("welcome " + res.data.name)
+              setAuth(true); 
+              navigate("/")
+            }
             setLoading(false);
             
         }catch(err){
