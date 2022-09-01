@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { Button, Container, ProgressBar } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../AuthContext/AuthContext';
 // import { ActiveButton} from '../components/main/Inputs';
 import { MainScreen } from '../MainScreen'
 import { ConfirmSubmission } from './ConfirmSubmission';
@@ -10,21 +10,7 @@ import { SocialsInfo } from './SocialsInfo';
 import { UploadInfo } from './UploadInfo';
 import { YoutubeInfo } from './YoutubeInfo';
 export const MasterForm = () => {
-    const navigate = useNavigate();
-    const [authorized, setAuthorized] = useState(false);
-    const isAuthenticated = async () => {
-      try {
-        const res = await axios.get("/api/authorized");
-        if (res) {
-          setAuthorized(true);
-        }
-        } catch (err) {
-            navigate("/login");
-        }
-    };
-    useEffect(() => {
-      isAuthenticated();
-    }, [authorized]);
+    const {auth} = useAuth();
 
     const [formData, setFormData] = useState({
       businessname: "",
@@ -72,66 +58,72 @@ export const MasterForm = () => {
         setStep(prev => prev-25);
     } 
     console.log(ytLinks)
+    
   return (
-    <MainScreen title="AddBusiness">
-      <Container>
-        <>
-          <div className="mb-4">
-            <ProgressBar striped now={step} label={`${step}%`} />
-          </div>
-          <div>
-            {
-              {
-                0: (
-                  <ContactInfo formData={formData} setFormData={setFormData} />
-                ),
-                25: (
-                  <SocialsInfo formData={formData} setFormData={setFormData} />
-                ),
-                50: (
-                  <UploadInfo formData={formData} setFormData={setFormData} />
-                ),
-                75: <YoutubeInfo ytLinks={ytLinks} setYtLinks={setYtLinks} />,
-                100: (
-                  <ConfirmSubmission
-                    formData={formData}
-                    setFormData={setFormData}
-                  />
-                ),
-              }[step]
-            }
-            <div className="d-flex justify-content-evenly px-5 mt-3">
-              {step > 20 ? (
-                <Button
-                  variant="outline-primary"
-                  size="lg"
-                  className="ButtonInput me-2 "
-                  onClick={prevStep}
-                >
-                  Back
-                </Button>
-              ) : null}
-              {step < 100 ? (
-                <Button
-                  onClick={nextStep}
-                  size="md"
-                  className="activeButtonInput"
-                >
-                  Next
-                </Button>
-              ) : (
-                <Button
-                  size="md"
-                  className="activeButtonInput"
-                  onClick={handleSubmit}
-                >
-                  Submit
-                </Button>
-              )}
+    <>
+      {
+        auth && 
+      <MainScreen title="AddBusiness">
+        <Container>
+          <>
+            <div className="mb-4">
+              <ProgressBar striped now={step} label={`${step}%`} />
             </div>
-          </div>
-        </>
-      </Container>
-    </MainScreen>
+            <div>
+              {
+                {
+                  0: (
+                    <ContactInfo formData={formData} setFormData={setFormData} />
+                  ),
+                  25: (
+                    <SocialsInfo formData={formData} setFormData={setFormData} />
+                  ),
+                  50: (
+                    <UploadInfo formData={formData} setFormData={setFormData} />
+                  ),
+                  75: <YoutubeInfo ytLinks={ytLinks} setYtLinks={setYtLinks} />,
+                  100: (
+                    <ConfirmSubmission
+                      formData={formData}
+                      setFormData={setFormData}
+                    />
+                  ),
+                }[step]
+              }
+              <div className="d-flex justify-content-evenly px-5 mt-3">
+                {step > 20 ? (
+                  <Button
+                    variant="outline-primary"
+                    size="lg"
+                    className="ButtonInput me-2 "
+                    onClick={prevStep}
+                  >
+                    Back
+                  </Button>
+                ) : null}
+                {step < 100 ? (
+                  <Button
+                    onClick={nextStep}
+                    size="md"
+                    className="activeButtonInput"
+                  >
+                    Next
+                  </Button>
+                ) : (
+                  <Button
+                    size="md"
+                    className="activeButtonInput"
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </Button>
+                )}
+              </div>
+            </div>
+          </>
+        </Container>
+      </MainScreen>
+      }
+    </>
   );
 }

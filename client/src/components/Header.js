@@ -2,12 +2,15 @@ import axios from 'axios';
 import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../AuthContext/AuthContext';
 export const Header = () => {
+  const {user,setAuth,auth} = useAuth();  
   const navigate = useNavigate(); 
   const handleLogout = async ()=>{
     try{
       const res = await axios.get('/api/logout');
       if(res){
+        setAuth(false); 
         navigate("/")
       }
     }catch(err){
@@ -15,29 +18,45 @@ export const Header = () => {
     }
     
   }
+  console.log("header: "+auth)
   return (
     <Navbar collapseOnSelect sticky="top" expand="sm" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
           Tizon
         </Navbar.Brand>
-        <Nav style={{display: "flex" , flexDirection: "row"}}>
-        {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Nav style={{ display: "flex", flexDirection: "row" }}>
+          {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav"> */}
-            <Nav.Link className="me-3" as={Link} to="/addbusiness">
-              Add Business
+          {!auth && 
+          <>
+            <Nav.Link className="me-3" as={Link} exact to="/login">
+              Login
             </Nav.Link>
-            <Nav.Link className="me-3" as={Link} to="/stats">
-              Stats
+            <Nav.Link className="me-3" as={Link} exact to="/register">
+              Register
             </Nav.Link>
-            <NavDropdown title="User" >
-              <NavDropdown.Item as={Link} to="/edit">
-                Edit Profile
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+          </>}
+          {auth && (
+            <>
+              <Nav.Link className="me-3" as={Link} exact to="/addbusiness">
+                Add Business
+              </Nav.Link>
+              <Nav.Link className="me-3" as={Link} exact to="/stats">
+                Stats
+              </Nav.Link>
+              <NavDropdown title={user && user.name}>
+                <NavDropdown.Item as={Link} exact to="/edit">
+                  Edit Profile
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={handleLogout}>
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            </>
+          )}
+        </Nav>
         {/* </Navbar.Collapse> */}
       </Container>
     </Navbar>
