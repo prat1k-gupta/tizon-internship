@@ -21,6 +21,7 @@ export const MasterForm = () => {
       linkedin: "",
       facebook: "",
       twitter: "",
+      logo: "",
       pics: [],
       ytlinks: [],
     });
