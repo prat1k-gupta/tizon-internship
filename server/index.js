@@ -32,7 +32,7 @@ app.use("/api/stats",statsRoutes);
 
 //to check authorization
 app.use('/api/authorized',authenticate,(req,res)=>{
-  res.status(200).json({message: "authenticated"});
+  res.status(200).json({name: req.rootUser.name});
 })
 
 
