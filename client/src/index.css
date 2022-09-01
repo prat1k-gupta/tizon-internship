@@ -40,4 +40,9 @@ h4 {
   min-height: 100vh;
   padding-top: 45px;
 }
+
+::selection {
+  color: #fff;
+  background: var(--purple);
+}
 /* ========= */
