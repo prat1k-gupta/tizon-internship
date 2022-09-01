@@ -28,7 +28,7 @@ export const UploadInfo = ({formData,setFormData,multipleArr,setMultipleArr}) =>
           );
           const response = await res.json();
           const url = response.url.toString();
-          setFormData({ ...formData, pic: url });
+          setFormData({ ...formData, logo: url });
         } catch (err) {
           setPicMessage(err);
           console.log(err);
