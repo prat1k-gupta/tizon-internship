@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Connect } from "./Connect/Connect";
 import { Gallery } from "./Gallery";
 import "./TabGroup.css";
 import { VideoGallery } from "./VideoGallery/VideoGallery";
@@ -46,7 +47,7 @@ const TabGroup = ()=>{
                 <div 
                     className={toggleState === 3 ? "content active-content" : "content"}
                 >
-                    Connect
+                    <Connect/>
                 </div>
             </div>
         </div>
