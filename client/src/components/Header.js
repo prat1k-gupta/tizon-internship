@@ -4,7 +4,8 @@ import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext/AuthContext';
 export const Header = () => {
-  const {user,setAuth,auth} = useAuth();  
+  const {user,setAuth,auth,business} = useAuth();  
+  console.log("business: ",business)
   const navigate = useNavigate(); 
   const handleLogout = async ()=>{
     try{
@@ -39,9 +40,14 @@ export const Header = () => {
           </>}
           {auth && (
             <>
+              {business ?
+              <Nav.Link className="me-3" as={Link} exact to="/editbusiness">
+                Edit Business
+              </Nav.Link>:
               <Nav.Link className="me-3" as={Link} exact to="/addbusiness">
                 Add Business
               </Nav.Link>
+              }
               <Nav.Link className="me-3" as={Link} exact to="/stats">
                 Stats
               </Nav.Link>
