@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Gallery } from "./Gallery";
 import "./TabGroup.css";
+import { VideoGallery } from "./VideoGallery/VideoGallery";
 
 const TabGroup = ()=>{
     const [toggleState, setToggleState] = useState(1);
@@ -40,7 +41,7 @@ const TabGroup = ()=>{
                 <div 
                     className={toggleState === 2? "content active-content" : "content"}
                 >
-                    Videos
+                    <VideoGallery />
                 </div>
                 <div 
                     className={toggleState === 3 ? "content active-content" : "content"}

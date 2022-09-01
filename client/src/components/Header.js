@@ -22,7 +22,7 @@ export const Header = () => {
   return (
     <Navbar collapseOnSelect sticky="top" expand="sm" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand as={Link} exact to="/">
+        <Navbar.Brand as={Link} to="/">
           Tizon
         </Navbar.Brand>
         <Nav style={{ display: "flex", flexDirection: "row" }}>

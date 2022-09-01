@@ -1,0 +1,17 @@
+.videos{
+    column-count: 4;
+    column-width: 33%;
+    padding: 0 12px;
+}
+
+@media (max-width : 990px){
+    .videos{
+        column-count: 3;
+    }
+}
+@media (max-width : 480px){
+    .videos{
+        column-count: 1;
+        column-width: 100%;
+    }
+}

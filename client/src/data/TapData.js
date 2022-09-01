@@ -11,11 +11,11 @@ const TapData = {
     "pics": [],
     "ytlinks": [
       {
-        "link": "https://youtube.com/status",
+        "link": "https://youtu.be/JtF35kvGCgI",
         "_id": "630a85b618002170f5394e4d"
       },
       {
-        "link": "https://youtube.com/value",
+        "link": "https://youtu.be/BddP6PYo2gs",
         "_id": "630a85b618002170f5394e4e"
       }
     ],
