@@ -45,4 +45,7 @@ h4 {
   color: #fff;
   background: var(--purple);
 }
+::-webkit-scrollbar {
+  display: none;
+}
 /* ========= */

@@ -3167,12 +3167,13 @@ textarea.form-control-lg{
 }
 .dropdown-item:focus,.dropdown-item:hover{
     color:var(--bs-dropdown-link-hover-color);
-    background-color:var(--bs-dropdown-link-hover-bg)
+    /* Changed */
+    background-color:var(--pink)
 }
 .dropdown-item.active,.dropdown-item:active{
     color:var(--bs-dropdown-link-active-color);
     text-decoration:none;
-    background-color:var(--bs-dropdown-link-active-bg)
+    background-color:var(--pink)
 }
 .dropdown-item.disabled,.dropdown-item:disabled{
     color:var(--bs-dropdown-link-disabled-color);
@@ -3390,7 +3391,7 @@ textarea.form-control-lg{
 }
 .navbar{
     --bs-navbar-padding-x:0;
-    --bs-navbar-padding-y:1rem;
+    --bs-navbar-padding-y:0.5rem;
     --bs-navbar-color:rgba(34, 34, 34, 0.7);
     --bs-navbar-hover-color:#222;
     --bs-navbar-disabled-color:rgba(0, 0, 0, 0.3);
@@ -3456,7 +3457,8 @@ textarea.form-control-lg{
     color:var(--bs-navbar-active-color)
 }
 .navbar-nav .dropdown-menu{
-    position:static
+    position:absolute;
+    left: -130px;
 }
 .navbar-text{
     padding-top:.5rem;
