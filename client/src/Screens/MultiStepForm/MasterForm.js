@@ -21,6 +21,7 @@ export const MasterForm = () => {
       linkedin: "",
       facebook: "",
       twitter: "",
+      logo: "",
       pics: [],
       ytlinks: [],
     });
@@ -29,11 +30,13 @@ export const MasterForm = () => {
         link: "",
       },
     ]);
-
+    const [multipleArr, setMultipleArr] = useState([]);
+    console.log(multipleArr)
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const finalData = { ...formData, ytlinks: ytLinks };
-      console.log(finalData);
+      const finalData = { ...formData, ytlinks: ytLinks};
+      const ultraFinalData = {...finalData, pics: multipleArr };
+      console.log(ultraFinalData);
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -41,7 +44,7 @@ export const MasterForm = () => {
         withCredentials: true,
       };
       try {
-        const res = await axios.post("/api/users/business", finalData, config);
+        const res = await axios.post("/api/users/business", ultraFinalData, config);
         console.log(res.data);
       } catch (err) {
         console.log(err);
@@ -61,69 +64,81 @@ export const MasterForm = () => {
     
   return (
     <>
-      {
-        auth && 
-      <MainScreen title="AddBusiness">
-        <Container>
-          <>
-            <div className="mb-4">
-              <ProgressBar striped now={step} label={`${step}%`} />
-            </div>
-            <div>
-              {
-                {
-                  0: (
-                    <ContactInfo formData={formData} setFormData={setFormData} />
-                  ),
-                  25: (
-                    <SocialsInfo formData={formData} setFormData={setFormData} />
-                  ),
-                  50: (
-                    <UploadInfo formData={formData} setFormData={setFormData} />
-                  ),
-                  75: <YoutubeInfo ytLinks={ytLinks} setYtLinks={setYtLinks} />,
-                  100: (
-                    <ConfirmSubmission
-                      formData={formData}
-                      setFormData={setFormData}
-                    />
-                  ),
-                }[step]
-              }
-              <div className="d-flex justify-content-evenly px-5 mt-3">
-                {step > 20 ? (
-                  <Button
-                    variant="outline-primary"
-                    size="lg"
-                    className="ButtonInput me-2 "
-                    onClick={prevStep}
-                  >
-                    Back
-                  </Button>
-                ) : null}
-                {step < 100 ? (
-                  <Button
-                    onClick={nextStep}
-                    size="md"
-                    className="activeButtonInput"
-                  >
-                    Next
-                  </Button>
-                ) : (
-                  <Button
-                    size="md"
-                    className="activeButtonInput"
-                    onClick={handleSubmit}
-                  >
-                    Submit
-                  </Button>
-                )}
+      {auth && (
+        <MainScreen title="AddBusiness">
+          <Container>
+            <>
+              <div className="mb-4">
+                <ProgressBar striped now={step} label={`${step}%`} />
               </div>
-            </div>
-          </>
-        </Container>
-      </MainScreen>
-      }
+              <div>
+                {
+                  {
+                    0: (
+                      <ContactInfo
+                        formData={formData}
+                        setFormData={setFormData}
+                      />
+                    ),
+                    25: (
+                      <SocialsInfo
+                        formData={formData}
+                        setFormData={setFormData}
+                      />
+                    ),
+                    50: (
+                      <UploadInfo
+                        formData={formData}
+                        setFormData={setFormData}
+                        multipleArr={multipleArr}
+                        setMultipleArr={setMultipleArr}
+                      />
+                    ),
+                    75: (
+                      <YoutubeInfo ytLinks={ytLinks} setYtLinks={setYtLinks} />
+                    ),
+                    100: (
+                      <ConfirmSubmission
+                        formData={formData}
+                        setFormData={setFormData}
+                      />
+                    ),
+                  }[step]
+                }
+                <div className="d-flex justify-content-evenly px-5 mt-3">
+                  {step > 20 ? (
+                    <Button
+                      variant="outline-primary"
+                      size="lg"
+                      className="ButtonInput me-2 "
+                      onClick={prevStep}
+                    >
+                      Back
+                    </Button>
+                  ) : null}
+                  {step < 100 ? (
+                    <Button
+                      onClick={nextStep}
+                      size="md"
+                      className="activeButtonInput"
+                    >
+                      Next
+                    </Button>
+                  ) : (
+                    <Button
+                      size="md"
+                      className="activeButtonInput"
+                      onClick={handleSubmit}
+                    >
+                      Submit
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </>
+          </Container>
+        </MainScreen>
+      )}
     </>
   );
 }

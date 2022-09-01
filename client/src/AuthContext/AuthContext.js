@@ -4,7 +4,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 const AuthContext = createContext({
     auth: null,
     setAuth: ()=> {},
-    user: null
+    user: null,
+    business: null,
+    setBusiness: ()=>{}
 })
 
 export const useAuth = () => useContext(AuthContext)
@@ -12,24 +14,36 @@ export const useAuth = () => useContext(AuthContext)
 const AuthProvider = ({children})=>{
     const [user,setUser] = useState(null); 
     const [auth,setAuth] = useState(null); 
-    useEffect(()=>{
-        const data = localStorage.getItem("isAuthenticated")
-        if(data){
-            setAuth(data); 
-        }
-    },[])
+    const [business,setBusiness] = useState(null); 
+    // useEffect(()=>{
+    //     const data = localStorage.getItem("isAuthenticated")
+    //     if(data){
+    //         setAuth(data); 
+    //     }
+    // },[])
 
-    useEffect(()=>{
-        console.log(auth)
-        localStorage.setItem("isAuthenticated",auth); 
-    },[auth])
-
+    // useEffect(()=>{
+    //     localStorage.setItem("isAuthenticated",auth); 
+    // },[auth])
+    // const businessExist =async ()=>{
+    //     try{
+    //         const res = await axios.get('/api/business',{withCredentials: true}); 
+    //         if(res){
+    //             setBusiness(true); 
+    //         }else{
+    //             setBusiness(false); 
+    //         }
+    //     }catch(err){
+    //         console.log(err);
+    //     }
+    // }
     const isAuth = async ()=>{
         try{
             const res = await axios.get('/api/authorized'); 
             if(res){
                 setUser(res.data); 
                 setAuth(true)
+                setBusiness(res.data.business)
             }
         }catch(err){
             setUser(null); 
@@ -37,11 +51,12 @@ const AuthProvider = ({children})=>{
         }
     }
     useEffect(()=>{
+        // businessExist(); 
         isAuth(); 
     },[auth])
 
     return (
-        <AuthContext.Provider value={{auth,setAuth,user}}>
+        <AuthContext.Provider value={{auth,setAuth,user,business,setBusiness}}>
             {children}
         </AuthContext.Provider>
     )

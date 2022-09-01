@@ -31,8 +31,10 @@ app.use("/api/users", userRoutes);
 app.use("/api/stats",statsRoutes);
 
 //to check authorization
-app.use('/api/authorized',authenticate,(req,res)=>{
-  res.status(200).json({name: req.rootUser.name});
+app.use('/api/authorized',authenticate,async (req,res)=>{
+  const userid = req.userID; 
+  const businessExist = await business.findOne({userid})
+  res.status(200).json({name: req.rootUser.name,business: businessExist });
 })
 
 
@@ -55,7 +57,16 @@ app.get("/api/logout",(req,res)=>{
   res.status(200).json({message: "logged out!!"})
 })
 
-
+// app.get('/api/business',authenticate,async (req,res)=>{
+//   try{
+//     const businessExist = await business.findOne({userid: req.userID});
+//     if(businessExist){
+//       return res.send(businessExist); 
+//     }
+//   }catch(err){
+//     console.log(err); 
+//   }
+// })
 //server running here
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

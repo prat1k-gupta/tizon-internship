@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import data from "../../../data/imgData";
+import alreadyData from "../../../data/imgData";
 import "./Gallery.css";
 
-const Gallery = ()=>{
-
+const Gallery = ({data})=>{
+    if(!data){
+        data = alreadyData; 
+    }
     const [model, setModel] = useState(false);
     const [tempImg, setTempImg] = useState("");
 
@@ -22,8 +24,8 @@ const Gallery = ()=>{
             <div className="gallery">
                 {data.map((item, index)=>{
                     return (
-                        <div className="pics" key={index} onClick={()=>getImg(item.link)}>
-                            <img src={item.link} alt="Image" style={{width : "100%"}}/>
+                        <div className="pics" key={index} onClick={()=>getImg(item)}>
+                            <img src={item} alt="Image" style={{width : "100%"}}/>
                         </div>
                     );
                 })}
