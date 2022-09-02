@@ -1,7 +1,7 @@
 import { useAuth } from "../../AuthContext/AuthContext";
-import { BottomNav } from "../components/tap/BottomNav/BottomNav";
-import { ScrollArea } from "../components/tap/ScrollArea";
-import { StaticImage } from "../components/tap/StaticImage";
+import { BottomNav } from "./tap/BottomNav/BottomNav";
+import { ScrollArea } from "./tap/ScrollArea";
+import { StaticImage } from "./tap/StaticImage";
 
 const CardTap = () => {
     const {business} = useAuth();  

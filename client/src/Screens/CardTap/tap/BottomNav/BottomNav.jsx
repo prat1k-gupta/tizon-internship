@@ -4,7 +4,7 @@ import { HiOutlineMail, HiOutlineGlobeAlt, HiHashtag } from "react-icons/hi";
 import { SiWhatsapp } from "react-icons/si";
 import { RiContactsBookFill } from "react-icons/ri";
 import data from "../../../../data/TapData";
-import { ActiveButton } from "../../main/Inputs";
+import { ActiveButton } from "../../../components/main/Inputs";
 import { useState } from "react";
 import { Facebook, Instagram, Linkedin, Twitter, Web } from "./socialHandles";
 
