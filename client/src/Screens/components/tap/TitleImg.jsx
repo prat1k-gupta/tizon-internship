@@ -11,8 +11,8 @@ const TitleImg = ({data})=>{
         <div className="titleImg">
             <div className="logo"><img src={data.logo} alt="Logo" /></div>
             <div className="titleDes">
-                <h3>{dummyData.businessname}</h3>
-                <p>{dummyData.businessname}</p>
+                <h3>{data.businessname}</h3>
+                <p>{data.description}</p>
             </div>
         </div>
     );
