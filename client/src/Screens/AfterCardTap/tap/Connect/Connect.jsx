@@ -1,14 +1,44 @@
-import React from 'react'
-import { Form } from 'react-bootstrap';
-import { ActiveButton } from '../../../components/main/Inputs';
+import axios from "axios";
+import React, { useState } from "react";
+import { Form } from "react-bootstrap";
+import { ActiveButton } from "../../../components/main/Inputs";
 
-export const Connect = () => {
-    const handleChange = (e)=>{
-        console.log(e.target.value)
+export const Connect = ({ id }) => {
+  //api/stats/connect
+  const [connectInfo, setConnectInfo] = useState({
+    name: "",
+    businessname: "",
+    website: "",
+    phone: "",
+    email: "",
+    instagram: "",
+    businessid: { id },
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setConnectInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  console.log(connectInfo);
+
+  //submit connect info
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post("/api/stats/connect", connectInfo, config);
+      console.log(res);
+      window.alert(res.data.message); 
+    } catch (err) {
+      console.log(err);
     }
-    const handleSubmit  = (e)=>{
-        e.preventDefault(); 
-    }
+  };
   return (
     <div>
       <Form autoComplete="off" onSubmit={handleSubmit}>
@@ -36,14 +66,44 @@ export const Connect = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+        <Form.Group className="mb-3" controlId="formBasicBusiness">
+          <Form.Label>Business Name</Form.Label>
           <Form.Control
-            name="password"
-            type="password"
+            name="businessname"
+            type="text"
             onChange={handleChange}
             // value={regInfo.password}
-            placeholder="Password"
+            placeholder="Enter Business Name"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPhone">
+          <Form.Label>Phone</Form.Label>
+          <Form.Control
+            name="phone"
+            type="tel"
+            onChange={handleChange}
+            // value={regInfo.password}
+            placeholder="Enter Phone Number"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicWebsite">
+          <Form.Label>website</Form.Label>
+          <Form.Control
+            name="website"
+            type="text"
+            onChange={handleChange}
+            // value={regInfo.password}
+            placeholder="Enter Website"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicWebsite">
+          <Form.Label>instagram</Form.Label>
+          <Form.Control
+            name="instagram"
+            type="text"
+            onChange={handleChange}
+            // value={regInfo.password}
+            placeholder="Enter Website"
           />
         </Form.Group>
 
@@ -51,9 +111,9 @@ export const Connect = () => {
           {/* <Button variant="primary" type="submit">
                 Submit
             </Button> */}
-          <ActiveButton type="submit" value="Sign up" />
+          <ActiveButton type="submit" value="Connect with Me" />
         </Form.Group>
       </Form>
     </div>
   );
-}
+};
