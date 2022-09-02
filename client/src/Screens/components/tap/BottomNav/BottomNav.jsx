@@ -30,7 +30,7 @@ const BottomNav = ()=>{
 
     }
 
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     return (<>
         {show &&
