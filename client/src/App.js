@@ -1,17 +1,17 @@
 import "./App.css";
-import AuthProvider from "./AuthContext/AuthContext";
+import { useAuth } from "./AuthContext/AuthContext";
 import Footer from "./components/footer/Footer";
 import { Header } from "./components/Header";
 import { AppRoutes } from "./routes/AppRoutes";
 
 function App() {
+  const {showNav} = useAuth(); 
+
   return (
     <>
-    <AuthProvider>
-      <Header />
+      {showNav && <Header />}
       <AppRoutes/>
       <Footer />
-    </AuthProvider>
     </>
   );
 }
