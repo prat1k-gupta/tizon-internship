@@ -15,10 +15,10 @@ function InputField(props){
     );
 }
 
-function ActiveButton(props){
+function ActiveButton({type, value, ...rest}){
     return <div className="button">
-            <button className="activeButtonInput" type={props.inputType} >
-                    {props.value} 
+            <button className="activeButtonInput" type={type} {...rest}>
+                    {value} 
             </button>        
         </div>
 }
