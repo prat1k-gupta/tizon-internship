@@ -4,7 +4,7 @@ import { Gallery } from "./Gallery";
 import "./TabGroup.css";
 import { VideoGallery } from "./VideoGallery/VideoGallery";
 
-const TabGroup = ({ business }) => {
+const TabGroup = ({ business,id }) => {
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
     setToggleState(index);
@@ -46,7 +46,7 @@ const TabGroup = ({ business }) => {
         <div
           className={toggleState === 3 ? "content active-content" : "content"}
         >
-          <Connect />
+          <Connect id ={id}/>
         </div>
       </div>
     </div>
