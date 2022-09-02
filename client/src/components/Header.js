@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext/AuthContext';
 
 export const Header = () => {
-  const {user,setAuth,auth,business,showNav} = useAuth();  
+  const {user,setAuth,auth,business} = useAuth();  
   console.log("business: ",business)
   const navigate = useNavigate(); 
   const handleLogout = async ()=>{
@@ -23,7 +23,6 @@ export const Header = () => {
   console.log("header: "+auth)
   return (
     <>
-      {showNav && (
         <Navbar
           collapseOnSelect
           sticky="top"
@@ -87,7 +86,6 @@ export const Header = () => {
             {/* </Navbar.Collapse> */}
           </Container>
         </Navbar>
-      )}
     </>
   );
 }
