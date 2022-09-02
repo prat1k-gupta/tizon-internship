@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useState } from 'react'
 import { Button, Container, ProgressBar } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../AuthContext/AuthContext';
 // import { ActiveButton} from '../components/main/Inputs';
 import { MainScreen } from '../MainScreen'
@@ -10,8 +11,8 @@ import { SocialsInfo } from './SocialsInfo';
 import { UploadInfo } from './UploadInfo';
 import { YoutubeInfo } from './YoutubeInfo';
 export const MasterForm = () => {
-    const {auth} = useAuth();
-
+    const {auth,setRefresh} = useAuth();
+    const navigate = useNavigate(); 
     const [formData, setFormData] = useState({
       businessname: "",
       website: "",
@@ -46,6 +47,9 @@ export const MasterForm = () => {
       try {
         const res = await axios.post("/api/users/business", ultraFinalData, config);
         console.log(res.data);
+        setRefresh(true); 
+        navigate("/")
+
       } catch (err) {
         console.log(err);
       }
