@@ -3,27 +3,31 @@ const mongoose = require("mongoose");
 const statsSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   businessname: {
     type: String,
-    required: true,
+    required: false,
   },
   phone: {
     type: Number,
-    required: true,
+    required: false,
   },
   website: {
     type: String,
-    required: true,
+    required: false,
   },
   instagram: {
     type: String,
-    required: true,
+    required: false,
+  },
+  businessid: {
+    type: "ObjectId",
+    ref: "business",
   },
   userid: {
     type: "ObjectId",

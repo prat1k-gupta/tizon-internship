@@ -1,5 +1,5 @@
 const userStats = require('../Models/statsSchema')
-
+const business = require('../Models/businessSchema')
 exports.getStats = async (req, res) => {
   const id = await req.userID;
   const connectedPeople = await userStats.find({ userid : id });
@@ -8,9 +8,18 @@ exports.getStats = async (req, res) => {
 };
 
 exports.connectMe = async (req, res) => {
-  const { name, businessname, website, phone, email, instagram, userid } =
+  var { name, businessname, website, phone, email, instagram,businessid} =
     req.body;
-
+  var userid = ""; 
+  try{
+    const findBusiness = await business.findOne({_id: businessid.id});
+    userid = findBusiness.userid; 
+  }catch(err){
+    console.log(err); 
+  }
+  console.log("userid: " + userid); 
+  businessid = businessid.id;
+  console.log("businessid "+ businessid); 
   const newStats = new userStats({
     name,
     businessname,
@@ -18,6 +27,7 @@ exports.connectMe = async (req, res) => {
     phone,
     email,
     instagram,
+    businessid,
     userid,
   });
 
