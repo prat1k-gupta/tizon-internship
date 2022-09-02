@@ -1,8 +1,7 @@
 import React from "react";
 import "./BottomNav.css"
 import { HiOutlineMail, HiOutlineGlobeAlt, HiHashtag } from "react-icons/hi";
-import { SiWhatsapp } from "react-icons/si";
-import { RiContactsBookFill } from "react-icons/ri";
+import { RiContactsBookFill, RiWhatsappLine } from "react-icons/ri";
 import data from "../../../../data/TapData";
 import { ActiveButton } from "../../main/Inputs";
 import { useState } from "react";
@@ -55,7 +54,7 @@ const BottomNav = ()=>{
                 <div className="option" onClick={()=>Email()}><HiOutlineMail /><p>Email</p></div>
                 <div className="option" onClick={()=>web()}><HiOutlineGlobeAlt /><p>Web</p></div>
                 <div className="option" onClick={()=>contact()}><RiContactsBookFill style={{fill : "#b615dc", width : "35px"}}/><p>Save</p></div>
-                <div className="option" onClick={()=>SendMessage()}><SiWhatsapp  /><p>Whatsapp</p></div>
+                <div className="option" onClick={()=>SendMessage()}><RiWhatsappLine  /><p>Whatsapp</p></div>
                 <div className="option" onClick={()=>setShow(true)}><HiHashtag /><p>Social</p></div>
             </div>
         </div>    
