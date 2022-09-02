@@ -1,0 +1,31 @@
+.handles{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding: 5px 5px 5px 15px;
+    cursor: pointer;
+}
+
+.handles p{
+    margin-left: 5px;
+}
+.facebook{
+    background-color: #4267B2;
+}
+.linkedin{
+    background-color: #0A66C2;
+}
+.instagram{
+    background: linear-gradient(45deg, #8a3ab9, #bc2a8d, #e95950, #fccc63);
+    background-repeat: no-repeat;
+}
+.twitter{
+    background-color: #1DA1F2;
+}
+.web{
+    background-color: var(--purple);
+}

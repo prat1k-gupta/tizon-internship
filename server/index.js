@@ -41,14 +41,22 @@ app.use('/api/authorized',authenticate,async (req,res)=>{
 // tap card api 
 app.get("/api/user/:id", async (req, res) => {
   const id = req.params.id;
-  var findBusinessProfile = await business
-    .findOne({ _id: id })
-    .populate("userid");
+  try{
+    var findBusinessProfile = await business
+      .findOne({ _id: id })
+      .populate("userid");
 
-  findBusinessProfile.userid.password = undefined;
-  findBusinessProfile.userid.token = undefined;
+      if (findBusinessProfile) {
+        findBusinessProfile.userid.password = undefined;
+        findBusinessProfile.userid.token = undefined;
+        return res.send(findBusinessProfile);
+      }
+    }catch(err){
+      res.status(404).json({error: "business doesn't exist"})
+  }
+  
+  
 
-  res.send(findBusinessProfile);
 });
 
 //logout api 
