@@ -9,7 +9,7 @@ const TitleImg = ({data})=>{
 
     return(
         <div className="titleImg">
-            <div className="logo"><img src={data.logo} alt="Logo" /></div>
+            <div className="logo"><img src={data.logo} /></div>
             <div className="titleDes">
                 <h3>{data.businessname}</h3>
                 <p>{data.description}</p>

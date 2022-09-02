@@ -3,6 +3,8 @@ import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap"
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext/AuthContext';
+import logo from "./Tizonlogo.png";
+
 export const Header = () => {
   const {user,setAuth,auth,business} = useAuth();  
   console.log("business: ",business)
@@ -24,7 +26,7 @@ export const Header = () => {
     <Navbar collapseOnSelect sticky="top" expand="sm" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          Tizon
+          <div style={{width:"35px"}}><img src={logo} style={{width: "100%"}} /></div>
         </Navbar.Brand>
         <Nav style={{ display: "flex", flexDirection: "row" }}>
           {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
