@@ -6,7 +6,9 @@ const AuthContext = createContext({
     setAuth: ()=> {},
     user: null,
     business: null,
-    setBusiness: ()=>{}
+    setBusiness: ()=>{},
+    refresh: null,
+    setRefresh:  ()=>{}
 })
 
 export const useAuth = () => useContext(AuthContext)
@@ -15,6 +17,7 @@ const AuthProvider = ({children})=>{
     const [user,setUser] = useState(null); 
     const [auth,setAuth] = useState(null); 
     const [business,setBusiness] = useState(null); 
+    const [refresh,setRefresh] = useState(null)
     // useEffect(()=>{
     //     const data = localStorage.getItem("isAuthenticated")
     //     if(data){
@@ -53,10 +56,10 @@ const AuthProvider = ({children})=>{
     useEffect(()=>{
         // businessExist(); 
         isAuth(); 
-    },[auth])
+    },[auth,refresh])
 
     return (
-        <AuthContext.Provider value={{auth,setAuth,user,business,setBusiness}}>
+        <AuthContext.Provider value={{auth,setAuth,user,business,setBusiness,setRefresh}}>
             {children}
         </AuthContext.Provider>
     )
