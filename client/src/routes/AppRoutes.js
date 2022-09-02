@@ -7,6 +7,7 @@ import { AddBusinessPage } from "../Screens/AddBusiness/AddBusinessPage";
 import { MasterForm } from "../Screens/MultiStepForm/MasterForm";
 import { CardTap } from "../Screens/CardTap/CardTap";
 import { HomeScreen } from "../Screens/HomeScreen/HomeScreen";
+import { AfterCardTap } from "../Screens/AfterCardTap/AfterCardTap";
 
 export const AppRoutes = ()=>{
     return (
@@ -18,7 +19,7 @@ export const AppRoutes = ()=>{
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/editbusiness" element={<AddBusinessPage />} />
         <Route path="/addbusiness" element={<MasterForm />} />
-        {/* <Route path="/business/:id" element={<CardTap/>} /> */}
+        <Route path="/business/:id" element={<AfterCardTap/>} />
         <Route exact path="/business" element={<MasterForm />} />
         <Route path="/card" element={<CardTap />} />
       </Routes>

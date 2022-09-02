@@ -26,47 +26,59 @@ export const Header = () => {
     <Navbar collapseOnSelect sticky="top" expand="sm" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <div style={{width:"35px"}}><img src={logo} style={{width: "100%"}} /></div>
+          <div style={{width:"35px"}}><img src={logo} style={{width: "100%"}} alt = "logo"/></div>
         </Navbar.Brand>
         <Nav style={{ display: "flex", flexDirection: "row" }}>
           {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav"> */}
-          {!auth && 
-          <>
-            <Nav.Link className="me-3" as={Link} exact to="/login">
-              Login
-            </Nav.Link>
-            <Nav.Link className="me-3" as={Link} exact to="/register">
-              Register
-            </Nav.Link>
-          </>}
-          {auth && (
-            <>
-              {business ?
-              <Nav.Link className="me-3" as={Link} exact to="/editbusiness">
-                Edit Business
-              </Nav.Link>:
-              <Nav.Link className="me-3" as={Link} exact to="/addbusiness">
-                Add Business
-              </Nav.Link>
-              }
-              <Nav.Link className="me-3" as={Link} exact to="/stats">
-                Stats
-              </Nav.Link>
-              <NavDropdown title={user && user.name}>
-                <NavDropdown.Item as={Link} exact to="/edit">
-                  Edit Profile
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item onClick={handleLogout}>
-                  Logout
-                </NavDropdown.Item>
-              </NavDropdown>
-            </>
-          )}
-        </Nav>
-        {/* </Navbar.Collapse> */}
-      </Container>
-    </Navbar>
+              {!auth && (
+                <>
+                  <Nav.Link className="me-3" as={Link} exact to="/login">
+                    Login
+                  </Nav.Link>
+                  <Nav.Link className="me-3" as={Link} exact to="/register">
+                    Register
+                  </Nav.Link>
+                </>
+              )}
+              {auth && (
+                <>
+                  {business ? (
+                    <Nav.Link
+                      className="me-3"
+                      as={Link}
+                      exact
+                      to="/editbusiness"
+                    >
+                      Edit Business
+                    </Nav.Link>
+                  ) : (
+                    <Nav.Link
+                      className="me-3"
+                      as={Link}
+                      exact
+                      to="/addbusiness"
+                    >
+                      Add Business
+                    </Nav.Link>
+                  )}
+                  <Nav.Link className="me-3" as={Link} exact to="/stats">
+                    Stats
+                  </Nav.Link>
+                  <NavDropdown title={user && user.name}>
+                    <NavDropdown.Item as={Link} exact to="/edit">
+                      Edit Profile
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item onClick={handleLogout}>
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
+              )}
+            </Nav>
+            {/* </Navbar.Collapse> */}
+          </Container>
+        </Navbar>
   );
 }

@@ -1,0 +1,23 @@
+.scrollArea{
+    width: 100%;
+    min-height: 70vh;
+    padding: 50px 10px 10px 10px;
+    background-color: var(--grey);
+    /* margin-top: 20px; */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: relative;
+    top: -150px;
+}
+.scrollArea::before{
+    position: absolute;
+    content: "";
+    top: 15px;
+    left: 50%;
+    width: 45px;
+    height: 3px;
+    border-radius: 25px;
+    background-color: var(--bs-light);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
