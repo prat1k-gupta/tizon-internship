@@ -18,7 +18,8 @@ export const AppRoutes = ()=>{
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/editbusiness" element={<AddBusinessPage />} />
         <Route path="/addbusiness" element={<MasterForm />} />
-        <Route path="/business" element={<MasterForm />} />
+        {/* <Route path="/business/:id" element={<CardTap/>} /> */}
+        <Route exact path="/business" element={<MasterForm />} />
         <Route path="/card" element={<CardTap />} />
       </Routes>
     );

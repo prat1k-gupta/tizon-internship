@@ -3,7 +3,7 @@ import "./BottomNav.css"
 import { HiOutlineMail, HiOutlineGlobeAlt, HiHashtag } from "react-icons/hi";
 import { RiContactsBookFill, RiWhatsappLine } from "react-icons/ri";
 import data from "../../../../data/TapData";
-import { ActiveButton } from "../../main/Inputs";
+import { ActiveButton } from "../../../components/main/Inputs";
 import { useState } from "react";
 import { Facebook, Instagram, Linkedin, Twitter, Web } from "./socialHandles";
 

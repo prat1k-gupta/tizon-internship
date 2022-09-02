@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form } from 'react-bootstrap';
-import { ActiveButton } from '../../main/Inputs';
+import { ActiveButton } from '../../../components/main/Inputs';
 
 export const Connect = () => {
     const handleChange = (e)=>{

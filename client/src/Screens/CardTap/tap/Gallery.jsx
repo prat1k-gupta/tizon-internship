@@ -18,14 +18,14 @@ const Gallery = ({data})=>{
     return (
         <>
             <div className={model ? "model open" : "model"}>
-                <img src={tempImg} alt="Image" />
+                <img src={tempImg} alt="gallery" />
                 <p className="closeIcon" onClick={()=>setModel(false)}>+</p>
             </div>
             <div className="gallery">
                 {data.map((item, index)=>{
                     return (
                         <div className="pics" key={index} onClick={()=>getImg(item)}>
-                            <img src={item} alt="Image" style={{width : "100%"}}/>
+                            <img src={item} alt="gallery" style={{width : "100%"}}/>
                         </div>
                     );
                 })}
