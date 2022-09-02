@@ -4,9 +4,12 @@ import { HiOutlineMail, HiOutlineGlobeAlt, HiHashtag } from "react-icons/hi";
 import { SiWhatsapp } from "react-icons/si";
 import { RiContactsBookFill } from "react-icons/ri";
 import data from "../../../../data/TapData";
-
+import { ActiveButton } from "../../main/Inputs";
+import { useState } from "react";
+import { Facebook, Instagram, Linkedin, Twitter, Web } from "./socialHandles";
 
 const BottomNav = ()=>{
+
     const SendMessage = ()=>{
         let whatsapp = `https://wa.me/${data.phone}?text=I%20got%20your%20number%20via%20your%20business%20profile%2e%20I%20need%20some%20details%20on%20`;
         window.open(whatsapp, "_blank");
@@ -26,22 +29,37 @@ const BottomNav = ()=>{
     const contact =()=>{
 
     }
-    
-    const hashtag = ()=>{
-        
-    }
 
-    return (
+    const [show, setShow] = useState(true);
+
+    return (<>
+        {show &&
+        <div className="popup-overlay">
+            <div className="pop">
+                <h1>#Socials</h1>
+                <hr />
+                {<Facebook  />}
+                <Twitter />
+                <Linkedin />
+                <Instagram />
+                <Web />
+                {/* <hr style={{margin : "0"}}/> */}
+                {/* Agar koi dikkat hui to iski vajah se ho sakti hai */}
+                <ActiveButton type="button" value="Dismiss" onClick={()=>setShow(false)}/>
+            </div>
+        </div>
+    
+    }
         <div className="bottomNav">
             <div className="navBox">
                 <div className="option" onClick={()=>Email()}><HiOutlineMail /><p>Email</p></div>
                 <div className="option" onClick={()=>web()}><HiOutlineGlobeAlt /><p>Web</p></div>
                 <div className="option" onClick={()=>contact()}><RiContactsBookFill style={{fill : "#b615dc", width : "35px"}}/><p>Save</p></div>
                 <div className="option" onClick={()=>SendMessage()}><SiWhatsapp  /><p>Whatsapp</p></div>
-                <div className="option" onClick={()=>hashtag()}><HiHashtag /><p>Social</p></div>
+                <div className="option" onClick={()=>setShow(true)}><HiHashtag /><p>Social</p></div>
             </div>
-        </div>
-    );
+        </div>    
+    </>);
 }
 
 export { BottomNav };
