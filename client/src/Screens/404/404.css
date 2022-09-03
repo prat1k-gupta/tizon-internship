@@ -1,0 +1,26 @@
+.box404{
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 100px; */
+}
+.svgbx{
+    width: 50%;
+    margin-top: 50px;
+}
+.svgbx img{
+    width: 100%;
+}
+.box404 p{
+    margin-top: 40px;
+}
+@media (max-width: 500px) {
+    .svgbx{
+        width: 80%;
+    }
+}
+
