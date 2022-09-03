@@ -183,7 +183,7 @@ export const EditBusinessPage = () => {
                   Submit
                 </Button>
               </Form.Group> */}
-              <ActiveButton type="submit" value="Submit" />
+              <ActiveButton type="submit" value="Save Changes" />
             </Form>
           </div>
         </MainScreen>
