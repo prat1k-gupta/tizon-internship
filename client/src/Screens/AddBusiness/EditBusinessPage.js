@@ -6,43 +6,43 @@ import { ActiveButton } from "../components/main/Inputs";
 import { useNavigate } from "react-router-dom";
 import { MainScreen } from "../MainScreen";
 import { YtForm } from "./YtForm";
+import { useAuth } from "../../AuthContext/AuthContext";
 // import { ErrorMessage } from "../utils/ErrorMessage";
 // import { LoadSpinner } from "../utils/LoadSpinner";
 // import { SuccessMessage } from "../utils/SuccessMessage";
 
-export const AddBusinessPage = () => {
+export const EditBusinessPage = () => {
+  const { business , auth,setRefresh} = useAuth();
   const navigate = useNavigate();
-  const [authorized, setAuthorized] = useState(false);
-  const isAuthenticated = async () => {
-    try {
-      const res = await axios.get("/api/authorized");
-      if (res) {
-        setAuthorized(true);
+  console.log("businesss:" + business)
+  
+  useEffect(()=>{
+    (()=>{
+      console.log("sujeet")
+      if (!business) {
+        console.log("sujeet lomdu");
+        navigate("/");
       }
-    } catch (err) {
-      navigate("/login");
+    })();
+    
+  },[business])
+  
+  const [formData, setFormData] = useState(
+      business ? business : {
+      businessname: "",
+      website: "",
+      description: "",
+      phone: "",
+      instagram: "",
+      linkedin: "",
+      facebook: "",
+      twitter: "",
+      logo: "",
+      pics: [],
+      ytlinks: [],
     }
-  };
-  useEffect(() => {
-    isAuthenticated();
-  }, []);
-  const [formData, setFormData] = useState({
-    businessname: "",
-    website: "",
-    description: "",
-    phone: "",
-    instagram: "",
-    linkedin: "",
-    facebook: "",
-    twitter: "",
-    pics: [],
-    ytlinks: [],
-  });
-  const [ytLinks, setYtLinks] = useState([
-    {
-      link: "",
-    },
-  ]);
+  );
+  const [ytLinks, setYtLinks] = useState(formData.ytlinks);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -63,15 +63,17 @@ export const AddBusinessPage = () => {
       withCredentials: true,
     };
     try {
-      const res = await axios.post("/api/users/business", finalData, config);
+      const res = await axios.put("/api/users/editbusiness", finalData, config);
+      setRefresh((ref)=>(!ref))
       console.log(res.data);
     } catch (err) {
+      setRefresh((ref)=>(!ref))
       console.log(err);
     }
   };
   return (
     <>
-      {authorized && (
+      {auth && (
         <MainScreen title="Add Business Details">
           <div>
             <Form autoComplete="off" onSubmit={handleSubmit}>
@@ -84,7 +86,7 @@ export const AddBusinessPage = () => {
                   name="businessname"
                   type="text"
                   onChange={handleChange}
-                  //   value={regInfo.name}
+                  value={formData.businessname}
                   placeholder="Enter Business Name"
                 />
               </Form.Group>
@@ -94,7 +96,7 @@ export const AddBusinessPage = () => {
                   name="website"
                   type="text"
                   onChange={handleChange}
-                  //   value={regInfo.email}
+                    value={formData.website}
                   placeholder="Enter Website"
                 />
               </Form.Group>
@@ -104,7 +106,7 @@ export const AddBusinessPage = () => {
                   name="description"
                   as="textarea"
                   onChange={handleChange}
-                  //   value={regInfo.password}
+                    value={formData.description}
                   placeholder="Description"
                 />
               </Form.Group>
@@ -114,7 +116,7 @@ export const AddBusinessPage = () => {
                   name="phone"
                   type="tel"
                   onChange={handleChange}
-                  //   value={regInfo.password}
+                    value={formData.phone}
                   placeholder="Add Phone Number"
                 />
               </Form.Group>
@@ -124,7 +126,7 @@ export const AddBusinessPage = () => {
                   name="instagram"
                   type="text"
                   onChange={handleChange}
-                  //   value={regInfo.password}
+                    value={formData.instagram}
                   placeholder="https://instagram.com/"
                 />
               </Form.Group>
@@ -134,7 +136,7 @@ export const AddBusinessPage = () => {
                   name="linkedin"
                   type="text"
                   onChange={handleChange}
-                  //   value={regInfo.password}
+                    value={formData.linkedin}
                   placeholder="https://linkedin.com/in/"
                 />
               </Form.Group>
@@ -144,7 +146,7 @@ export const AddBusinessPage = () => {
                   name="facebook"
                   type="text"
                   onChange={handleChange}
-                  //   value={regInfo.password}
+                    value={formData.facebook}
                   placeholder="https://facebook.com/"
                 />
               </Form.Group>
@@ -154,7 +156,7 @@ export const AddBusinessPage = () => {
                   name="twitter"
                   type="text"
                   onChange={handleChange}
-                  //   value={regInfo.password}
+                    value={formData.twitter}
                   placeholder="https://twitter.com/"
                 />
               </Form.Group>
@@ -181,7 +183,7 @@ export const AddBusinessPage = () => {
                   Submit
                 </Button>
               </Form.Group> */}
-              <ActiveButton type="submit" value="Submit"/>
+              <ActiveButton type="submit" value="Save Changes" />
             </Form>
           </div>
         </MainScreen>
