@@ -54,9 +54,6 @@ app.get("/api/user/:id", async (req, res) => {
     }catch(err){
       res.status(404).json({error: "business doesn't exist"})
   }
-  
-  
-
 });
 
 //logout api 

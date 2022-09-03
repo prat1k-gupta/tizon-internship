@@ -56,10 +56,10 @@ const AuthProvider = ({children})=>{
             setAuth(false);
         }
     }
-    useEffect(()=>{
-        // businessExist(); 
-        isAuth(); 
-    },[auth,refresh])
+    useEffect(() => {
+      // businessExist();
+      isAuth();
+    }, [refresh,auth]);
 
     return (
         <AuthContext.Provider value={{auth,setAuth,user,business,setBusiness,setRefresh,showNav,setShowNav}}>

@@ -105,3 +105,43 @@ exports.addBusiness = async (req, res) => {
 
   res.status(200).json({ message: "done" });
 };
+
+exports.editBusiness = async (req,res)=>{
+  const userId = req.userID; 
+  const {
+    businessname,
+    description,
+    facebook,
+    instagram,
+    linkedin,
+    phone,
+    logo,
+    pics,
+    twitter,
+    website,
+    ytlinks
+  } = req.body;
+
+  exports.updateBusiness = await business.findOneAndUpdate(
+    { userid: userId },
+    {
+      $set: {
+        businessname,
+        description,
+        facebook,
+        instagram,
+        linkedin,
+        phone,
+        logo,
+        pics,
+        twitter,
+        website,
+        ytlinks,
+      },
+    },
+    {new: true}
+  );
+  res.json(this.updateBusiness)
+
+
+}
