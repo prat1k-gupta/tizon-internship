@@ -8,6 +8,7 @@ import { CardTap } from "../Screens/CardTap/CardTap";
 import { HomeScreen } from "../Screens/HomeScreen/HomeScreen";
 import { AfterCardTap } from "../Screens/AfterCardTap/AfterCardTap";
 import { EditBusinessPage } from "../Screens/AddBusiness/EditBusinessPage";
+import { Error404 } from "../Screens/404/404";
 
 export const AppRoutes = ()=>{
     return (
@@ -22,6 +23,7 @@ export const AppRoutes = ()=>{
         <Route path="/business/:id" element={<AfterCardTap/>} />
         <Route exact path="/business" element={<MasterForm />} />
         <Route path="/card" element={<CardTap />} />
+        <Route path="/404" element={<Error404 />} />
       </Routes>
     );
 }

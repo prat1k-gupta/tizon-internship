@@ -1,0 +1,51 @@
+.welcomeScreen{
+    padding: 20px;
+
+}
+.heroSection{
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heroText{
+    width: 50%;
+    text-align: center;
+}
+.heroText h1{
+    font-size: 3.5rem;
+}
+.heroText p{
+    font-size: 1rem;
+}
+
+.hero-img{
+    width: 50%;
+    text-align: center;
+}
+
+
+.hero-img img{
+    width: 100%;
+    max-width: 35rem;
+}
+
+@media (max-width: 500px) {
+    .heroSection{
+        flex-direction: column;
+    }
+    .hero-img{
+        width: 100%;
+        margin-top: 70px;
+    }
+    .heroText{
+        width: 100%;
+        margin-top: 70px;
+    }
+    .heroText h1{
+        font-size: 2.8rem;
+    }
+}

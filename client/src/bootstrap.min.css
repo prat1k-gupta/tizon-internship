@@ -9,7 +9,7 @@
     --pink : #D327A8;
     --purple : #B615DC;
     --border :#1f1f1f;
-    --sujeetGradient: linear-gradient(var(--pink),var(--purple))
+    --sujeetGradient: linear-gradient(var(--pink),var(--purple));
 
 
     --bs-blue:#375a7f;
