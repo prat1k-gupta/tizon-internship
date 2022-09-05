@@ -40,3 +40,9 @@ exports.connectMe = async (req, res) => {
     console.log(err);
   }
 };
+
+exports.deleteStats = async (req,res)=>{
+  const id = req.params.id; 
+  const stat = await userStats.findByIdAndDelete({_id: id}); 
+  res.send(stat); 
+}
