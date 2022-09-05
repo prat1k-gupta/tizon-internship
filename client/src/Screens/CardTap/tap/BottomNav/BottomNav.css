@@ -18,14 +18,14 @@
 .option {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   height: 100%;
   padding: 10px;
   cursor: pointer;
 }
 .option svg {
-  width: 25px;
+  width: 30px;
   height: auto;
 }
 /* -----Popup------- */
