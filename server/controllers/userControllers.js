@@ -145,3 +145,28 @@ exports.editBusiness = async (req,res)=>{
 
 
 }
+
+
+exports.editProfile = async(req,res)=>{
+  const userId = req.userID;
+  const currentUser = await user.findOne({_id: userId}); 
+  const {name,email,currentpassword,newpassword} = req.body;  
+  if(currentpassword){
+    const isCorrect = await bcrypt.compare(currentpassword, currentUser.password);
+    if(!isCorrect){
+      return res.status(404).json({error: "current password incorrect!!"})
+    }
+  }
+  try{
+    currentUser.name = name || currentUser.name
+    currentUser.email = currentUser.email
+    if(newpassword){
+      currentUser.password = newpassword || currentUser.password
+    }
+    const response = await currentUser.save(); 
+    res.send(response)
+  }catch(err){
+    console.log(err); 
+  }
+
+}

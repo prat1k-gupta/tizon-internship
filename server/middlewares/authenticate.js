@@ -17,6 +17,7 @@ const authenticate = async (req, res, next) => {
     }
     req.token = token;
     req.rootUser = rootUser;
+    req.password = req.rootUser.password; 
     req.userID = verifyToken._id; 
     next();
   } catch (err) {
