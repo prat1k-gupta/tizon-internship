@@ -7,8 +7,7 @@ import { useAuth } from "../../../../AuthContext/AuthContext";
 
 // ------------------Facebook-----------------
 
-const Facebook = ()=>{
-    const {business} = useAuth(); 
+const Facebook = ({business})=>{
     console.log("facebook "+ business.facebook)
     const facabooklink = ()=>{
         const link = business.facebook;
@@ -23,8 +22,7 @@ const Facebook = ()=>{
 }
 
 // ------------------Twitter-----------------
-const Twitter = ()=>{
-    const { business } = useAuth(); 
+const Twitter = ({business})=>{
     const twitterlink = ()=>{
         const link = business.twitter;
         window.open(link, "_blank")
@@ -39,8 +37,7 @@ const Twitter = ()=>{
 }
 
 // ------------------LinkedIn-----------------
-const Linkedin = ()=>{
-    const { business } = useAuth(); 
+const Linkedin = ({business})=>{
     const linkedinlink = ()=>{
         const link = business.linkedin;
         window.open(link, "_blank")
@@ -55,8 +52,7 @@ const Linkedin = ()=>{
 }
 
 // ------------------Instagram-----------------
-const Instagram = ()=>{
-    const { business } = useAuth(); 
+const Instagram = ({business})=>{
     const instagramlink = ()=>{
         const link = business.instagram;
         window.open(link, "_blank")
@@ -70,8 +66,7 @@ const Instagram = ()=>{
 }
 
 // ------------------Web-----------------
-const Web = ()=>{
-    const { business } = useAuth(); 
+const Web = ({business})=>{
     const weblink = ()=>{
         const link = business.website;
         window.open(link, "_blank")
