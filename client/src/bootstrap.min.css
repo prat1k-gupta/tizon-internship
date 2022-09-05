@@ -3458,7 +3458,7 @@ textarea.form-control-lg{
 }
 .navbar-nav .dropdown-menu{
     position:absolute;
-    left: -100px;
+    left: -90px;
 }
 .navbar-text{
     padding-top:.5rem;

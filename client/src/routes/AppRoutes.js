@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { EditProfilePage } from "../Screens/EditProfile/EditProfilePage";
 import { LoginPage } from "../Screens/LoginPage/LoginPage";
 import { RegisterPage } from "../Screens/RegisterPage/RegisterPage";
@@ -24,6 +24,7 @@ export const AppRoutes = ()=>{
         <Route exact path="/business" element={<MasterForm />} />
         <Route path="/card" element={<CardTap />} />
         <Route path="/404" element={<Error404 />} />
+        <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
     );
 }
