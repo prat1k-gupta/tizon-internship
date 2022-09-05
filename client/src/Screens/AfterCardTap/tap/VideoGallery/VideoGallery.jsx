@@ -1,12 +1,15 @@
 import React from "react";
-import data from "../../../../data/TapData";
+import alreadyData from "../../../../data/TapData";
 import "./videoGallery.css";
 import YouTube from 'react-youtube';
 var getYouTubeID = require('get-youtube-id');
 
 
-
-const VideoGallery = ()=>{
+const VideoGallery = ({data})=>{
+    console.log("videoGallery: "+data)
+    if(!data){
+        data = alreadyData; 
+    }
     const opts = {
         height: '240',
         width: "100%",
@@ -17,8 +20,7 @@ const VideoGallery = ()=>{
         }
     };
     
-    let youtubeLinks = data.ytlinks
-    
+    let youtubeLinks = data;
     return(
         <div className="videos">
             {youtubeLinks.map((item)=>{
