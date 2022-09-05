@@ -37,13 +37,12 @@ const BottomNav = ()=>{
             <div className="pop">
                 <h1>#Socials</h1>
                 <hr />
-                {<Facebook  />}
-                <Twitter />
-                <Linkedin />
-                <Instagram />
                 <Web />
-                {/* <hr style={{margin : "0"}}/> */}
-                {/* Agar koi dikkat hui to iski vajah se ho sakti hai */}
+                <Linkedin />
+                <Twitter />
+                <Instagram />
+                <Facebook  />
+                {/* Agar koi dikkat hui to is active button vajah se ho sakti hai */}
                 <ActiveButton type="button" value="Dismiss" onClick={()=>setShow(false)}/>
             </div>
         </div>
@@ -51,11 +50,11 @@ const BottomNav = ()=>{
     }
         <div className="bottomNav">
             <div className="navBox">
-                <div className="option" onClick={()=>Email()}><HiOutlineMail /><p>Email</p></div>
-                <div className="option" onClick={()=>web()}><HiOutlineGlobeAlt /><p>Web</p></div>
-                <div className="option" onClick={()=>contact()}><RiContactsBookFill style={{fill : "#b615dc", width : "35px"}}/><p>Save</p></div>
-                <div className="option" onClick={()=>SendMessage()}><RiWhatsappLine  /><p>Whatsapp</p></div>
-                <div className="option" onClick={()=>setShow(true)}><HiHashtag /><p>Social</p></div>
+                <div className="option" onClick={()=>Email()}><HiOutlineMail /></div>
+                <div className="option" onClick={()=>web()}><HiOutlineGlobeAlt /></div>
+                <div className="option" style={{backgroundColor:"#D327A8", borderRadius: "50%", height:"50px" }} onClick={()=>contact()}><RiContactsBookFill style={{fill : "#fff"}}/></div>
+                <div className="option" onClick={()=>SendMessage()}><RiWhatsappLine  /></div>
+                <div className="option" onClick={()=>setShow(true)}><HiHashtag /></div>
             </div>
         </div>    
     </>);
