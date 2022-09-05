@@ -1,13 +1,17 @@
 import React from "react";
 import "./socialHandles.css";
 import {BsFacebook, BsTwitter, BsLinkedin, BsInstagram, BsGlobe } from "react-icons/bs"
-import data from "../../../../data/TapData"
+import { useAuth } from "../../../../AuthContext/AuthContext";
+// import business from "../../../../business/Tapsocial"
 
 
 // ------------------Facebook-----------------
-const Facebook = ({...rest})=>{
+
+const Facebook = ()=>{
+    const {business} = useAuth(); 
+    console.log("facebook "+ business.facebook)
     const facabooklink = ()=>{
-        const link = data.facebook;
+        const link = business.facebook;
         window.open(link, "_blank")
     }
     return (
@@ -20,8 +24,9 @@ const Facebook = ({...rest})=>{
 
 // ------------------Twitter-----------------
 const Twitter = ()=>{
+    const { business } = useAuth(); 
     const twitterlink = ()=>{
-        const link = data.twitter;
+        const link = business.twitter;
         window.open(link, "_blank")
     }
     
@@ -35,8 +40,9 @@ const Twitter = ()=>{
 
 // ------------------LinkedIn-----------------
 const Linkedin = ()=>{
+    const { business } = useAuth(); 
     const linkedinlink = ()=>{
-        const link = data.linkedin;
+        const link = business.linkedin;
         window.open(link, "_blank")
     }
     
@@ -50,8 +56,9 @@ const Linkedin = ()=>{
 
 // ------------------Instagram-----------------
 const Instagram = ()=>{
+    const { business } = useAuth(); 
     const instagramlink = ()=>{
-        const link = data.instagram;
+        const link = business.instagram;
         window.open(link, "_blank")
     }
     return (
@@ -64,8 +71,9 @@ const Instagram = ()=>{
 
 // ------------------Web-----------------
 const Web = ()=>{
+    const { business } = useAuth(); 
     const weblink = ()=>{
-        const link = data.website;
+        const link = business.website;
         window.open(link, "_blank")
     }
     return (
