@@ -12,7 +12,7 @@ import { useAuth } from "../../AuthContext/AuthContext";
 // import { SuccessMessage } from "../utils/SuccessMessage";
 
 export const EditBusinessPage = () => {
-  const { business , auth,setRefresh} = useAuth();
+  const { business , auth, setRefresh} = useAuth();
   const navigate = useNavigate();
   console.log("businesss:" + business)
   

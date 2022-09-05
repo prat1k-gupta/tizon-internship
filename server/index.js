@@ -34,7 +34,7 @@ app.use("/api/stats",statsRoutes);
 app.use('/api/authorized',authenticate,async (req,res)=>{
   const userid = req.userID; 
   const businessExist = await business.findOne({userid})
-  res.status(200).json({name: req.rootUser.name,business: businessExist });
+  res.status(200).json({userData: {name: req.rootUser.name, email: req.rootUser.email},business: businessExist });
 })
 
 

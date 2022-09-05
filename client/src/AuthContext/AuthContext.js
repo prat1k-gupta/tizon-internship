@@ -47,7 +47,7 @@ const AuthProvider = ({children})=>{
         try{
             const res = await axios.get('/api/authorized'); 
             if(res){
-                setUser(res.data); 
+                setUser(res.data.userData); 
                 setAuth(true)
                 setBusiness(res.data.business)
             }

@@ -10,7 +10,7 @@ export const WelcomeScreen = () => {
   <div className='welcomeScreen'>
     <div className='heroSection'>
       <div className='heroText'>
-        <h1>Hello {user.name}</h1>
+        <h1>Hello {user && user.name}</h1>
         <p>Let's Digitize your business card</p> 
         <p>with</p> 
         <h3>Tizon</h3> 
