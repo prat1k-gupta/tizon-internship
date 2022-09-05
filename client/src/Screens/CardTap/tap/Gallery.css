@@ -32,7 +32,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 45px;
+    padding: 100px 0;
     top: 0;
     left: 0;
     background-color: #000000;
@@ -61,14 +61,17 @@
 }
 .model.open .closeIcon{
     position: fixed;
-    top: 35px;
-    right: 15px;
-    width: 2rem;
-    height: 2rem;
+    top: 50px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
     padding: 2px;
     color: #fff;
     background-color: #00000000;
     cursor: pointer;
     font-size: 50px;
-    transform: rotateZ(45deg);
+}
+.model.open .closeIcon svg{
+    transform: rotateZ(0deg);
+    width: 100%;
 }

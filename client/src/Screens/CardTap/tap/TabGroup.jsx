@@ -28,8 +28,9 @@ const TabGroup = ()=>{
                     Videos
                 </div>
                 <div 
-                    className={toggleState === 3 ? "tab active-tab" : "tab"}
-                    onClick={()=>toggleTab(3)}
+                    // className={toggleState === 3 ? "tab active-tab" : "tab"}
+                    className="disabled-tab"
+                    // onClick={()=>toggleTab(3)}
                 >
                     Connect
                 </div>

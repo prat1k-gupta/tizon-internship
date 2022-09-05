@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import alreadyData from "../../../data/imgData";
 import "./Gallery.css";
+import { MdOutlineClose } from "react-icons/md"
 
 const Gallery = ({data})=>{
     if(!data){
@@ -18,8 +19,8 @@ const Gallery = ({data})=>{
     return (
         <>
             <div className={model ? "model open" : "model"}>
+            <div className="closeIcon" onClick={()=>setModel(false)}><MdOutlineClose /></div>
                 <img src={tempImg} alt="gallery" />
-                <p className="closeIcon" onClick={()=>setModel(false)}>+</p>
             </div>
             <div className="gallery">
                 {data.map((item, index)=>{
