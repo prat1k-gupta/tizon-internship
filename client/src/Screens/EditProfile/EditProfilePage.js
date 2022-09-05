@@ -79,6 +79,7 @@ export const EditProfilePage = () => {
           <Form.Group className="mb-3 input" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
+              disabled
               name="email"
               type="email"
               onChange={handleChange}

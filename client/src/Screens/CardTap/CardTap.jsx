@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../AuthContext/AuthContext";
-import { BottomNav } from "./tap/BottomNav/BottomNav";
+// import { BottomNav } from "./tap/BottomNav/BottomNav";
 import { ScrollArea } from "./tap/ScrollArea";
 import { StaticImage } from "./tap/StaticImage";
 
@@ -16,7 +16,7 @@ const CardTap = () => {
         <>
             <StaticImage statImg = {business? business.pics[0] : null}/>
             <ScrollArea />
-            <BottomNav />
+            {/* <BottomNav /> */}
         </>
     
 )};
