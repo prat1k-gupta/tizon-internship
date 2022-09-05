@@ -3,26 +3,31 @@ import "./BottomNav.css"
 import { HiOutlineMail, HiOutlineGlobeAlt, HiHashtag } from "react-icons/hi";
 import { SiWhatsapp } from "react-icons/si";
 import { RiContactsBookFill } from "react-icons/ri";
-import data from "../../../../data/TapData";
+// import data from "../../../../data/TapData";
 import { ActiveButton } from "../../../components/main/Inputs";
 import { useState } from "react";
 import { Facebook, Instagram, Linkedin, Twitter, Web } from "./socialHandles";
 
-const BottomNav = ()=>{
-
+const BottomNav = ({business})=>{
+    const data = {
+        phone: `${business.phone}`,
+        email: `${business.userid.email}`,
+        website: `${business.website}`,
+    }
+    console.log(data)
     const SendMessage = ()=>{
         let whatsapp = `https://wa.me/${data.phone}?text=I%20got%20your%20number%20via%20your%20business%20profile%2e%20I%20need%20some%20details%20on%20`;
         window.open(whatsapp, "_blank");
     };
     
     const Email = ()=>{
-        let email = `mailto:${data.userid.email}`;
-        console.log(email);
+        let email = `mailto:${data.email}`;
         window.open(email, "_blank");
     };
 
     const web = ()=>{
         let link = data.website;
+        // console.log(link)
         window.open(link, "_blank");
     };
 
@@ -38,11 +43,11 @@ const BottomNav = ()=>{
             <div className="pop">
                 <h1>#Socials</h1>
                 <hr />
-                {<Facebook  />}
+                <Facebook />
                 <Twitter />
-                <Linkedin />
-                <Instagram />
-                <Web />
+                <Linkedin/>
+                <Instagram/>
+                <Web/>
                 {/* <hr style={{margin : "0"}}/> */}
                 {/* Agar koi dikkat hui to iski vajah se ho sakti hai */}
                 <ActiveButton type="button" value="Dismiss" onClick={()=>setShow(false)}/>

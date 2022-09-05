@@ -30,7 +30,7 @@ const AfterCardTap = () => {
             <>
             <StaticImage statImg = {business? business.pics[0] : null}/>
             <ScrollArea business = {business} id = {id} />
-            <BottomNav />
+            <BottomNav business = {business} />
             </>
             }
         </>
