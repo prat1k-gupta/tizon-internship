@@ -44,7 +44,7 @@ const TabGroup = ()=>{
                 <div 
                     className={toggleState === 2? "content active-content" : "content"}
                 >
-                    <VideoGallery />
+                    <VideoGallery data = {business ? business.ytlinks : null}/>
                 </div>
                 <div 
                     className={toggleState === 3 ? "content active-content" : "content"}
