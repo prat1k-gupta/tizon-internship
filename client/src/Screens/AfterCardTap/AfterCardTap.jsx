@@ -7,7 +7,7 @@ import { ScrollArea } from "./tap/ScrollArea";
 import { StaticImage } from "./tap/StaticImage";
 
 const AfterCardTap = () => {
-    const [business,setBusiness] = useState(); 
+    const [business,setBusiness] = useState(""); 
     const {setShowNav} = useAuth(); 
     const {id} = useParams(); 
     if(id){
@@ -23,7 +23,7 @@ const AfterCardTap = () => {
         }
     } 
     console.log(business)
-    useEffect(()=>{fetchUser()},[])
+    useEffect(()=>{fetchUser()},[business])
     return (
         <>
             {business && 

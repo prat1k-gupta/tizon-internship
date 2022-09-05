@@ -4,9 +4,28 @@ import { Card } from 'react-bootstrap';
 import { AiOutlineDelete, AiOutlineInstagram } from "react-icons/ai";
 import { IoMdCall } from "react-icons/io";
 import { MdOutlineEmail } from "react-icons/md";
-export const StatsCard = ({stat}) => {
-  const deleteHandler = ()=>{
-    window.alert("Are you sure?")
+import axios from 'axios';
+export const StatsCard = ({stat,setSuccess}) => {
+   
+  const deleteHandler = async ()=>{
+    try{
+      const url = "/api/stats/delete/"+stat._id;
+      const res = await axios.delete(url); 
+      setSuccess((prev)=>(!prev))
+    }catch(err){
+      console.log(err); 
+    }
+  }
+  const handleEmail = ()=>{
+    let email = "mailto:"+stat.email; 
+    window.open(email,"_blank")
+  }
+  const handlePhone = ()=>{
+    let phone = "tel:"+stat.phone;
+    window.open(phone,"_blank")
+  }
+  const handleInstagram = ()=>{
+    window.open(stat.instagram,"_blank")
   }
   return (
     <Card
@@ -24,21 +43,21 @@ export const StatsCard = ({stat}) => {
           <span className="bold-text">Name: </span>
           {stat.name}
           <br />
-          <span className="bold-text">business:</span> {stat.business}
+          <span className="bold-text">business:</span> {stat.businessname}
           <br />
           <span className="bold-text">website:</span> {stat.website}
         </Card.Text>
         <Card.Link href="#">
-          <IoMdCall />
+          <IoMdCall onClick = {handlePhone}/>
         </Card.Link>
         <Card.Link href="#">
-          <MdOutlineEmail />
+          <MdOutlineEmail onClick ={handleEmail}/>
         </Card.Link>
         <Card.Link href="#">
-          <AiOutlineInstagram />
+          <AiOutlineInstagram onClick= {handleInstagram}/>
         </Card.Link>
         <Card.Link href="#">
-          <AiOutlineDelete onClick={deleteHandler}/>
+          <AiOutlineDelete onClick={deleteHandler} />
         </Card.Link>
       </Card.Body>
     </Card>
