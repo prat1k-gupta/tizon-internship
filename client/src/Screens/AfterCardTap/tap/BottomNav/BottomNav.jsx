@@ -52,11 +52,11 @@ const BottomNav = ()=>{
     }
         <div className="bottomNav">
             <div className="navBox">
-                <div className="option" onClick={()=>Email()}><HiOutlineMail /><p>Email</p></div>
-                <div className="option" onClick={()=>web()}><HiOutlineGlobeAlt /><p>Web</p></div>
-                <div className="option" onClick={()=>contact()}><RiContactsBookFill style={{fill : "#b615dc", width : "35px"}}/><p>Save</p></div>
-                <div className="option" onClick={()=>SendMessage()}><SiWhatsapp  /><p>Whatsapp</p></div>
-                <div className="option" onClick={()=>setShow(true)}><HiHashtag /><p>Social</p></div>
+                <div className="option" onClick={()=>Email()}><HiOutlineMail /></div>
+                <div className="option" onClick={()=>web()}><HiOutlineGlobeAlt /></div>
+                <div className="option" onClick={()=>contact()}><RiContactsBookFill style={{fill : "#b615dc", width : "45px"}}/></div>
+                <div className="option" onClick={()=>SendMessage()}><SiWhatsapp  /></div>
+                <div className="option" onClick={()=>setShow(true)}><HiHashtag /></div>
             </div>
         </div>    
     </>);
