@@ -23,7 +23,7 @@ const AfterCardTap = () => {
         }
     } 
     console.log(business)
-    useEffect(()=>{fetchUser()},[business])
+    useEffect(()=>{fetchUser()},[])
     return (
         <>
             {business && 
