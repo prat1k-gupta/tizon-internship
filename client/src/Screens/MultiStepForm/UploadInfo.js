@@ -65,14 +65,15 @@ export const UploadInfo = ({formData,setFormData,multipleArr,setMultipleArr}) =>
         </Form.Group>
         
         <Form.Group className="mb-3" controlId="formBasicUploadImage">
-          <Form.Label>Upload Images</Form.Label>
+          <Form.Label>Upload Business Images (Max Limit: 4)</Form.Label>
           <Form.Control
             name="pics"
             type="file"
             multiple
             onChange={(e) => {
-              if (Array.from(e.target.files).length > 4) {
-                e.preventDefault();
+              console.log(multipleArr.length); 
+              if (Array.from(e.target.files).length > 4 || multipleArr.length>5) {
+                e.target.value = ""; 
                 alert(`Cannot upload files more than 4`);
                 return;
               }
@@ -87,7 +88,7 @@ export const UploadInfo = ({formData,setFormData,multipleArr,setMultipleArr}) =>
           />
           {uploadStatus ? 
           <div className="mb-4">
-          <ProgressBar striped now={uploadStatus} label={`${uploadStatus}%`} />
+          <ProgressBar striped now={uploadStatus} label={`${uploadStatus/25}/4`} />
           </div>: 
           <div></div>}
         </Form.Group>
