@@ -27,10 +27,10 @@ export const socialsInfoValidation = (formData, setErrorMsg,setStep) => {
     }, 2000);
   };
   if (
-    formData.instagram && !validator.isURL(formData.instagram) ||
-    formData.linkedin && !validator.isURL(formData.linkedin) ||
-    formData.twitter && !validator.isURL(formData.twitter) ||
-    formData.facebook && !validator.isURL(formData.facebook)
+    (formData.instagram && !validator.isURL(formData.instagram)) ||
+    (formData.linkedin && !validator.isURL(formData.linkedin)) ||
+    (formData.twitter && !validator.isURL(formData.twitter) ) ||
+    (formData.facebook && !validator.isURL(formData.facebook))
   ) {
     setErrorMsg("please enter the valid socials url");
     timeOut();
