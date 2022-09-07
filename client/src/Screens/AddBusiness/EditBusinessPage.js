@@ -108,8 +108,7 @@ export const EditBusinessPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const finalData = { ...formData, ytlinks: ytLinks };
-    const ultraFinalData = { ...finalData, pics: multipleArr };
-    console.log("ultraFinalData "+ ultraFinalData);
+    const ultraFinalData = { ...finalData, pics: multipleArr }
     const config = {
       headers: {
         "Content-type": "application/json",
@@ -124,6 +123,7 @@ export const EditBusinessPage = () => {
       setRefresh((ref)=>(!ref))
       console.log(err);
     }
+    navigate("/"); 
   };
   return (
     <>
@@ -217,7 +217,7 @@ export const EditBusinessPage = () => {
                   placeholder="https://twitter.com/"
                 />
               </Form.Group>
-              {picMessage && <ErrorMessage error = {picMessage}/>}
+              {picMessage && <ErrorMessage error={picMessage} />}
               <Form.Group className="mb-3" controlId="formBasicUploadImages">
                 <Form.Label>Upload Business Logo</Form.Label>
                 <Form.Control
@@ -237,12 +237,14 @@ export const EditBusinessPage = () => {
                   type="file"
                   multiple
                   onChange={(e) => {
-                    if (Array.from(e.target.files).length > 4) {
-                      e.preventDefault();
+                    if (
+                      Array.from(e.target.files).length > 4 ||
+                      multipleArr.length > 5
+                    ) {
+                      e.target.value = "";
                       alert(`Cannot upload files more than 4`);
                       return;
                     }
-
                     handleImagesUpload(
                       e.target.files,
                       handleMultiImageUpload,
@@ -256,7 +258,7 @@ export const EditBusinessPage = () => {
                     <ProgressBar
                       striped
                       now={uploadStatus}
-                      label={`${uploadStatus}%`}
+                      label={`${uploadStatus / 25}/4`}
                     />
                   </div>
                 ) : (
