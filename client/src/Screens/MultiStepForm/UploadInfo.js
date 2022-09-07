@@ -90,7 +90,7 @@ export const UploadInfo = ({formData,setFormData,multipleArr,setMultipleArr}) =>
           <div className="mb-4 mt-2">
           <ProgressBar striped now={uploadStatus} label={`${uploadStatus/25}/4`} />
           </div>: 
-          <div></div>}
+          <div><i>Note : Please wait while uploading file</i></div>}
         </Form.Group>
       </Form>
     </FormTitle>
