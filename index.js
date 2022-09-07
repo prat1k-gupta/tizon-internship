@@ -12,6 +12,7 @@ const statsRoutes = require('./server/routes/statsRoutes')
 const userRoutes = require("./server/routes/userRoutes");
 const userStats = require("./server/Models/statsSchema");
 const business = require("./server/Models/businessSchema");
+const path = require("path");
 
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
