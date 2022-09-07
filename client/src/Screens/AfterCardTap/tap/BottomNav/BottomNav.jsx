@@ -47,7 +47,7 @@ const BottomNav = ({business})=>{
           const blob = new Blob([res.data], {
             type: "text/vcard;charset=utf-8",
           });
-          FileSaver.saveAs(blob,"contact.vcf"); 
+          FileSaver.saveAs(blob,`${data.name}`); 
         };
         downloadTxtFile(); 
 
