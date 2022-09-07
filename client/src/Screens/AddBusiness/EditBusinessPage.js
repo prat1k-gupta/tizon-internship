@@ -128,15 +128,16 @@ export const EditBusinessPage = () => {
   return (
     <>
       {auth && (
-        <MainScreen title="Add Business Details">
+        <MainScreen title="Edit Business Details">
           <div>
             <Form autoComplete="off" onSubmit={handleSubmit}>
               {/* {loading && <LoadSpinner />} */}
               {/* {error && <ErrorMessage error={error} />} */}
               {/* {success && <SuccessMessage message={success} />} */}
               <Form.Group className="mb-3" controlId="formBasicName">
-                <Form.Label>Business Name</Form.Label>
+                <Form.Label>Business Name*</Form.Label>
                 <Form.Control
+                  required
                   name="businessname"
                   type="text"
                   onChange={handleChange}
@@ -145,7 +146,7 @@ export const EditBusinessPage = () => {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Website</Form.Label>
+                <Form.Label>Website (Optional)</Form.Label>
                 <Form.Control
                   name="website"
                   type="text"
@@ -155,8 +156,9 @@ export const EditBusinessPage = () => {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Description</Form.Label>
+                <Form.Label>Description*</Form.Label>
                 <Form.Control
+                  required
                   name="description"
                   as="textarea"
                   onChange={handleChange}
@@ -165,8 +167,9 @@ export const EditBusinessPage = () => {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPhone">
-                <Form.Label>Phone</Form.Label>
+                <Form.Label>Phone*</Form.Label>
                 <Form.Control
+                  required
                   name="phone"
                   type="tel"
                   onChange={handleChange}
@@ -269,11 +272,6 @@ export const EditBusinessPage = () => {
                   addMore={setYtLinks}
                 />
               ))}
-              {/* <Form.Group className="mb-2" controlId="submitButton">
-                <Button variant="primary" className="mt-2" type="submit">
-                  Submit
-                </Button>
-              </Form.Group> */}
               <ActiveButton type="submit" value="Save Changes" />
             </Form>
           </div>

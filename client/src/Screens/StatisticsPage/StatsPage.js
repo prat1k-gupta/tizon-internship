@@ -33,7 +33,7 @@ export const StatsPage = () => {
       <Container>
         {stats.length!== 0 ? stats.map((stat) => {
           return <StatsCard key={stat._id} setSuccess= {setSuccess} stat={stat} />;
-        }): <div>No Connections Yet</div>}
+        }): <h3>No connections yet :(</h3>}
       </Container>
     </MainScreen>
   );

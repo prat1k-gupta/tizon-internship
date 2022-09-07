@@ -48,6 +48,7 @@ export const Connect = ({ id }) => {
         <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>Name*</Form.Label>
           <Form.Control
+            required
             name="name"
             type="text"
             onChange={handleChange}
@@ -58,6 +59,7 @@ export const Connect = ({ id }) => {
         <Form.Group className="mb-3 input" controlId="formBasicEmail">
           <Form.Label>Email address*</Form.Label>
           <Form.Control
+            required
             name="email"
             type="email"
             onChange={handleChange}
@@ -79,6 +81,7 @@ export const Connect = ({ id }) => {
         <Form.Group className="mb-3" controlId="formBasicPhone">
           <Form.Label>Phone*</Form.Label>
           <Form.Control
+            required
             name="phone"
             type="tel"
             onChange={handleChange}

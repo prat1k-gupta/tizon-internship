@@ -11,8 +11,9 @@ export const ContactInfo = ({formData,setFormData}) => {
     <FormTitle title="Business Info">
       <Form>
       <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Business Name</Form.Label>
+        <Form.Label>Business Name*</Form.Label>
         <Form.Control
+          required
           name="businessname"
           type="text"
           onChange={handleChange}
@@ -21,17 +22,17 @@ export const ContactInfo = ({formData,setFormData}) => {
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Website</Form.Label>
+        <Form.Label>Website (Optional)</Form.Label>
         <Form.Control
           name="website"
           type="text"
           onChange={handleChange}
           value={formData.website}
-          placeholder="Enter Website"
+          placeholder="https://my-website.com"
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Description</Form.Label>
+        <Form.Label>Description*</Form.Label>
         <Form.Control
           name="description"
           as="textarea"
@@ -41,7 +42,7 @@ export const ContactInfo = ({formData,setFormData}) => {
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPhone">
-        <Form.Label>Phone</Form.Label>
+        <Form.Label>Phone*</Form.Label>
         <Form.Control
           name="phone"
           type="tel"
