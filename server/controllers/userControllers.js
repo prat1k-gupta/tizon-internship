@@ -122,26 +122,27 @@ exports.editBusiness = async (req,res)=>{
     ytlinks
   } = req.body;
 
-  exports.updateBusiness = await business.findOneAndUpdate(
-    { userid: userId },
-    {
-      $set: {
-        businessname,
-        description,
-        facebook,
-        instagram,
-        linkedin,
-        phone,
-        logo,
-        pics,
-        twitter,
-        website,
-        ytlinks,
-      },
-    },
-    {new: true}
-  );
-  res.json(this.updateBusiness)
+  const currentUser = await business.findOne({userid: userId}); 
+  try{
+    currentUser.businessname = businessname || currentUser.businessname; 
+    currentUser.description = description || currentUser.description; 
+    currentUser.facebook = facebook || currentUser.facebook; 
+    currentUser.instagram = instagram || currentUser.instagram; 
+    currentUser.linkedin = linkedin || currentUser.linkedin; 
+    currentUser.phone = phone || currentUser.phone; 
+    currentUser.logo = logo || currentUser.logo; 
+    currentUser.twitter = twitter || currentUser.twitter; 
+    currentUser.website = website || currentUser.website; 
+    currentUser.ytlinks = ytlinks || currentUser.ytlinks; 
+    if(pics.length !== 0){
+      currentUser.pics = pics;  
+    } 
+    const response = await currentUser.save(); 
+    res.send(response)
+
+  }catch(err){
+    console.log(err); 
+  }
 
 
 }
