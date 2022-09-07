@@ -1,18 +1,26 @@
 // import axios from "axios";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, ProgressBar } from "react-bootstrap";
 import { ActiveButton } from "../components/main/Inputs";
 import { useNavigate } from "react-router-dom";
 import { MainScreen } from "../MainScreen";
 import { YtForm } from "./YtForm";
+import imageCompression from "browser-image-compression";
 import { useAuth } from "../../AuthContext/AuthContext";
+import { handleMultiImageUpload, uploadMutlipleImages } from "../MultiStepForm/logic/MultipleImageUpload";
+import { uploadToServer } from "../MultiStepForm/logic/SingleImageUpload";
+import { ErrorMessage } from "../utils/ErrorMessage";
 // import { ErrorMessage } from "../utils/ErrorMessage";
 // import { LoadSpinner } from "../utils/LoadSpinner";
 // import { SuccessMessage } from "../utils/SuccessMessage";
 
 export const EditBusinessPage = () => {
   const { business , auth, setRefresh} = useAuth();
+  const [picMessage, setPicMessage] = useState("");
+  const [uploadStatus, setUploadStatus] = useState(0);
+  const [multipleArr, setMultipleArr] = useState([]);
+  console.log(multipleArr)
   const navigate = useNavigate();
   console.log("businesss:" + business)
   
@@ -51,11 +59,57 @@ export const EditBusinessPage = () => {
     }));
   };
 
+  async function handleImageUpload(imageFile, uploadToServer) {
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true,
+    };
+    try {
+      const compressedFile = await imageCompression(imageFile, options);
+      console.log(
+        "compressedFile instanceof Blob",
+        compressedFile instanceof Blob
+      ); // true
+      console.log(
+        `compressedFile size ${compressedFile.size / 1024 / 1024} MB`
+      ); // smaller than maxSizeMB
+
+      await uploadToServer(
+        compressedFile,
+        formData,
+        setFormData,
+        setPicMessage
+      ); // write your own logic
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleImagesUpload = async (
+    imageFiles,
+    handleMultiImageUpload,
+    uploadMutlipleImages
+  ) => {
+    for (let i = 0; i < imageFiles.length; i++) {
+      let file = imageFiles[i];
+      await handleMultiImageUpload(
+        file,
+        uploadMutlipleImages,
+        setPicMessage,
+        setMultipleArr
+      );
+      setUploadStatus((prev) => prev + 25);
+    }
+    // setMultipleArr(imageFiles.FileList);
+    // console.log(multipleArr)
+  };
   // setFormData({...formData,ytlinks: ytLinks});
   const handleSubmit = async (e) => {
     e.preventDefault();
     const finalData = { ...formData, ytlinks: ytLinks };
-    console.log(finalData);
+    const ultraFinalData = { ...finalData, pics: multipleArr };
+    console.log("ultraFinalData "+ ultraFinalData);
     const config = {
       headers: {
         "Content-type": "application/json",
@@ -63,9 +117,9 @@ export const EditBusinessPage = () => {
       withCredentials: true,
     };
     try {
-      const res = await axios.put("/api/users/editbusiness", finalData, config);
+      const res = await axios.put("/api/users/editbusiness", ultraFinalData, config);
       setRefresh((ref)=>(!ref))
-      console.log(res.data);
+      console.log("editedBusiness"+res.data);
     } catch (err) {
       setRefresh((ref)=>(!ref))
       console.log(err);
@@ -96,7 +150,7 @@ export const EditBusinessPage = () => {
                   name="website"
                   type="text"
                   onChange={handleChange}
-                    value={formData.website}
+                  value={formData.website}
                   placeholder="Enter Website"
                 />
               </Form.Group>
@@ -106,7 +160,7 @@ export const EditBusinessPage = () => {
                   name="description"
                   as="textarea"
                   onChange={handleChange}
-                    value={formData.description}
+                  value={formData.description}
                   placeholder="Description"
                 />
               </Form.Group>
@@ -116,7 +170,7 @@ export const EditBusinessPage = () => {
                   name="phone"
                   type="tel"
                   onChange={handleChange}
-                    value={formData.phone}
+                  value={formData.phone}
                   placeholder="Add Phone Number"
                 />
               </Form.Group>
@@ -126,7 +180,7 @@ export const EditBusinessPage = () => {
                   name="instagram"
                   type="text"
                   onChange={handleChange}
-                    value={formData.instagram}
+                  value={formData.instagram}
                   placeholder="https://instagram.com/"
                 />
               </Form.Group>
@@ -136,7 +190,7 @@ export const EditBusinessPage = () => {
                   name="linkedin"
                   type="text"
                   onChange={handleChange}
-                    value={formData.linkedin}
+                  value={formData.linkedin}
                   placeholder="https://linkedin.com/in/"
                 />
               </Form.Group>
@@ -146,7 +200,7 @@ export const EditBusinessPage = () => {
                   name="facebook"
                   type="text"
                   onChange={handleChange}
-                    value={formData.facebook}
+                  value={formData.facebook}
                   placeholder="https://facebook.com/"
                 />
               </Form.Group>
@@ -156,18 +210,55 @@ export const EditBusinessPage = () => {
                   name="twitter"
                   type="text"
                   onChange={handleChange}
-                    value={formData.twitter}
+                  value={formData.twitter}
                   placeholder="https://twitter.com/"
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              {picMessage && <ErrorMessage error = {picMessage}/>}
+              <Form.Group className="mb-3" controlId="formBasicUploadImages">
+                <Form.Label>Upload Business Logo</Form.Label>
+                <Form.Control
+                  name="logo"
+                  type="file"
+                  onChange={(e) => {
+                    handleImageUpload(e.target.files[0], uploadToServer);
+                  }}
+                  placeholder="choose file"
+                />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicUploadImage">
                 <Form.Label>Upload Images</Form.Label>
                 <Form.Control
                   name="pics"
                   type="file"
-                  onChange={handleChange}
+                  multiple
+                  onChange={(e) => {
+                    if (Array.from(e.target.files).length > 4) {
+                      e.preventDefault();
+                      alert(`Cannot upload files more than 4`);
+                      return;
+                    }
+
+                    handleImagesUpload(
+                      e.target.files,
+                      handleMultiImageUpload,
+                      uploadMutlipleImages
+                    );
+                  }}
                   placeholder="choose file"
                 />
+                {uploadStatus ? (
+                  <div className="mb-4">
+                    <ProgressBar
+                      striped
+                      now={uploadStatus}
+                      label={`${uploadStatus}%`}
+                    />
+                  </div>
+                ) : (
+                  <div></div>
+                )}
               </Form.Group>
               {ytLinks.map((link, index) => (
                 <YtForm
