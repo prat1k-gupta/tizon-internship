@@ -5,17 +5,13 @@ export const ConfirmSubmission = ({formData,setFormData}) => {
     console.log(formData)
   return (
     <FormTitle title="Confirm Your Business">
-      <ul>
         {
             Object.keys(formData).map((keyName, i) => (
-                <li className="travelcompany-input" key={i}>
-                <span className="input-label">
-                    {keyName} : {formData[keyName]}
-                </span>
-                </li>
+                <div className="travelcompany-input" key={i}>
+                <span style={{textTransform: "capitalize"}}>{keyName}</span> : <span>{formData[keyName]}</span>
+                </div>
             ))
         }
-      </ul>
     </FormTitle>
   );
 }

@@ -26,7 +26,7 @@ export const YtForm = ({size,index,list,addMore}) => {
 
   return (
     <Form.Group className="mb-1" controlId="formBasicTwitter">
-      <Form.Label>youtube</Form.Label>
+      <Form.Label>Youtube</Form.Label>
       <div
         style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
       >

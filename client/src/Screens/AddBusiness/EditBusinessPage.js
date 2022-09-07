@@ -249,7 +249,7 @@ export const EditBusinessPage = () => {
                   placeholder="choose file"
                 />
                 {uploadStatus ? (
-                  <div className="mb-4">
+                  <div className="mb-4 mt-2">
                     <ProgressBar
                       striped
                       now={uploadStatus}

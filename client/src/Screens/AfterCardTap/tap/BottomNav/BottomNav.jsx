@@ -88,8 +88,8 @@ const BottomNav = ({business})=>{
             <div className="option" onClick={() => web()}>
               <HiOutlineGlobeAlt />
             </div>
-            <div className="option" onClick={() => contact()}>
-              <RiContactsBookFill style={{ fill: "#b615dc", width: "45px" }} />
+            <div className="option" style={{backgroundColor:"#D327A8", borderRadius: "50%", height:"50px" }} onClick={()=>contact()}>
+              <RiContactsBookFill style={{fill : "#fff"}}/>
             </div>
             <div className="option" onClick={() => SendMessage()}>
               <SiWhatsapp />

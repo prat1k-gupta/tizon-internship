@@ -3,12 +3,12 @@ const TapData = {
     "businessname": "Nothing Pvt. Ltd.",
     "website": "https://nothing1.com",
     "description": "nothing special sdfsdjkf kdjfsdf  dfs jksd fsdjdf lkdsf jshf lkdshf da hf ahsdfl a a jahsddf ajsfh a",
-    "phone": "7982422191",
+    "phone": "0123456789",
     "instagram": "https://instagram.com",
-    "linkedin": "",
-    "facebook": "",
-    "twitter": "",
-    "logo": "https://cdn.dribbble.com/userupload/3158902/file/original-7c71bfa677e61dea61bc2acd59158d32.jpg?resize=400x0",
+    "linkedin": "https://linkedin.com",
+    "facebook": "https://facebook.com",
+    "twitter": "https://twitter.com",
+    "logo": "https://media.discordapp.net/attachments/1009724495344435200/1017017815552774224/Default-Image.png",
     "pics": [],
     "ytlinks": [
       {
