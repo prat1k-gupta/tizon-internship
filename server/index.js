@@ -87,18 +87,7 @@ app.post("/api/savecontact",(req,res)=>{
 //   }
 // })
 //server running here
-// ----------deployment---------------------------
 
-if(process.env.NODE_ENV === "production"){
-  console.log(path.join(__dirname, "client", "build", "index.html"))
-  app.use(express.static(path.join(__dirname, "client", "build")))
-
-  app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, "client", "build", "index.html"))
-  })
-}
-
-// ----------deployment---------------------------
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
