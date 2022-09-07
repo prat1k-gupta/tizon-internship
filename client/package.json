@@ -10,6 +10,7 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "browser-image-compression": "^2.0.0",
+    "file-saver": "^2.0.5",
     "get-youtube-id": "^1.0.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",

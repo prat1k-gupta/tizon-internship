@@ -5,7 +5,7 @@ const express = require("express");
 const stats = require("./data/stats");
 const jwt = require("jsonwebtoken")
 const connectDB = require("./config/connectDB");
-
+const vCardJs = require('vcards-js')
 require("dotenv").config();
 // console.log(connectDB);
 const statsRoutes = require('./routes/statsRoutes')
@@ -17,6 +17,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const authenticate = require("./middlewares/authenticate");
 const app = express();
+const vcard = vCardJs(); 
 
 connectDB();
 app.use(express.json());
@@ -62,6 +63,19 @@ app.get("/api/logout",(req,res)=>{
   res.status(200).json({message: "logged out!!"})
 })
 
+
+app.post("/api/savecontact",(req,res)=>{
+  const{name,logo,phone,email,website} = req.body;
+  vcard.firstName = name; 
+  vcard.photo.attachFromUrl(
+    logo,
+    "JPEG"
+  );
+  vcard.email = email;
+  vcard.workPhone = phone;
+  vcard.workUrl = website;
+  res.send(vcard.getFormattedString()); 
+})
 // app.get('/api/business',authenticate,async (req,res)=>{
 //   try{
 //     const businessExist = await business.findOne({userid: req.userID});
