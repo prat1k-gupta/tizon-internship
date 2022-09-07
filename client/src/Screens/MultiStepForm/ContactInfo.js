@@ -27,7 +27,7 @@ export const ContactInfo = ({formData,setFormData}) => {
           type="text"
           onChange={handleChange}
           value={formData.website}
-          placeholder="Enter Website"
+          placeholder="https://my-website.com"
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">

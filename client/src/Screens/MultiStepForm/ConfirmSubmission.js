@@ -5,17 +5,7 @@ export const ConfirmSubmission = ({formData,setFormData}) => {
     console.log(formData)
   return (
     <FormTitle title="Confirm Your Business">
-      <ul>
-        {
-            Object.keys(formData).map((keyName, i) => (
-                <li className="travelcompany-input" key={i}>
-                <span className="input-label">
-                    {keyName} : {formData[keyName]}
-                </span>
-                </li>
-            ))
-        }
-      </ul>
+      <span>Business Name: {formData.businessname}</span>
     </FormTitle>
   );
 }
