@@ -72,7 +72,7 @@ export const MasterForm = () => {
         <MainScreen title="AddBusiness">
           <Container>
             <>
-              <div className="mb-4">
+              <div className="mb-4 mt-2 px-3">
                 <ProgressBar striped now={step} label={`${step}%`} />
               </div>
               <div>
@@ -109,7 +109,7 @@ export const MasterForm = () => {
                     ),
                   }[step]
                 }
-                <div className="d-flex justify-content-evenly px-5 mt-3">
+                <div className="d-flex justify-content-evenly px-3 mt-3">
                   {step > 20 ? (
                     <Button
                       variant="outline-primary"
