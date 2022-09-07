@@ -9,7 +9,7 @@
     "install-dependencies" : "cd client && npm install",
     "build" : "cd client && npm run build",
     "heroku-postbuild" : "npm run install-dependencies && npm run build",
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
