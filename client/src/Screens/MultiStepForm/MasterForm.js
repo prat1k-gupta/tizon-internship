@@ -1,18 +1,22 @@
 import axios from 'axios';
 import React, {useState } from 'react'
 import { Button, Container, ProgressBar } from 'react-bootstrap';
+
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../AuthContext/AuthContext';
 // import { ActiveButton} from '../components/main/Inputs';
 import { MainScreen } from '../MainScreen'
+import { ErrorMessage } from '../utils/ErrorMessage';
 import { ConfirmSubmission } from './ConfirmSubmission';
 import { ContactInfo } from './ContactInfo';
 import { SocialsInfo } from './SocialsInfo';
 import { UploadInfo } from './UploadInfo';
 import { YoutubeInfo } from './YoutubeInfo';
+import { contactInfoValidation, socialsInfoValidation } from './validation/formValidation';
 export const MasterForm = () => {
     const {auth,setRefresh} = useAuth();
     const navigate = useNavigate(); 
+    const [errorMsg,setErrorMsg] = useState(null); 
     const [formData, setFormData] = useState({
       businessname: "",
       website: "",
@@ -56,15 +60,28 @@ export const MasterForm = () => {
     };
 
     const [step,setStep] = useState(0);
-
+    
     const nextStep = ()=>{
-        setStep(prev => prev+25);
+        
+        switch(step){
+          case 0: 
+          contactInfoValidation(formData,setErrorMsg,setStep); 
+          break; 
+          case 25: 
+          console.log("water")
+          socialsInfoValidation(formData, setErrorMsg, setStep);
+          break;
+          default:
+            setStep(prev=> prev+25)
+        }
     }
 
     const prevStep = ()=>{
         setStep(prev => prev-25);
     } 
-    console.log(ytLinks)
+
+    //form validation 
+    
     
   return (
     <>
@@ -75,6 +92,7 @@ export const MasterForm = () => {
               <div className="mb-4">
                 <ProgressBar striped now={step} label={`${step}%`} />
               </div>
+              {errorMsg && <ErrorMessage error={errorMsg}/>}
               <div>
                 {
                   {
