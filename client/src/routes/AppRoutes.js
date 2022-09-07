@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { EditProfilePage } from "../Screens/EditProfile/EditProfilePage";
 import { LoginPage } from "../Screens/LoginPage/LoginPage";
 import { RegisterPage } from "../Screens/RegisterPage/RegisterPage";
@@ -10,21 +10,20 @@ import { AfterCardTap } from "../Screens/AfterCardTap/AfterCardTap";
 import { EditBusinessPage } from "../Screens/AddBusiness/EditBusinessPage";
 import { Error404 } from "../Screens/404/404";
 
-export const AppRoutes = ()=>{
-    return (
-      <Routes>
-        <Route exact path="/" element={<HomeScreen />} />
-        <Route path="/stats" element={<StatsPage />} />
-        <Route path="/edit" element={<EditProfilePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/editbusiness" element={<EditBusinessPage />} />
-        <Route path="/addbusiness" element={<MasterForm />} />
-        <Route path="/business/:id" element={<AfterCardTap/>} />
-        <Route exact path="/business" element={<MasterForm />} />
-        <Route path="/card" element={<CardTap />} />
-        <Route path="/404" element={<Error404 />} />
-        <Route path="*" element={<Navigate to="/404" />} />
-      </Routes>
-    );
-}
+export const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route exact path="/" element={<HomeScreen />} />
+      <Route path="/stats" element={<StatsPage />} />
+      <Route path="/edit" element={<EditProfilePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/editbusiness" element={<EditBusinessPage />} />
+      <Route path="/addbusiness" element={<MasterForm />} />
+      <Route path="/business/:id" element={<AfterCardTap />} />
+      <Route exact path="/business" element={<MasterForm />} />
+      <Route path="/card" element={<CardTap />} />
+      <Route path="*" element={<Error404 />} />
+    </Routes>
+  );
+};

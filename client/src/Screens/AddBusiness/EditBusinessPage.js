@@ -251,6 +251,7 @@ export const EditBusinessPage = () => {
                       uploadMutlipleImages
                     );
                   }}
+                  
                   placeholder="choose file"
                 />
                 {uploadStatus ? (
