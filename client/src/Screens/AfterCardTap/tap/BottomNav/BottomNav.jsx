@@ -1,5 +1,6 @@
 import React from "react";
 import "./BottomNav.css"
+import FileSaver from "file-saver"
 import { HiOutlineMail, HiOutlineGlobeAlt, HiHashtag } from "react-icons/hi";
 import { SiWhatsapp } from "react-icons/si";
 import { RiContactsBookFill } from "react-icons/ri";
@@ -7,12 +8,15 @@ import { RiContactsBookFill } from "react-icons/ri";
 import { ActiveButton } from "../../../components/main/Inputs";
 import { useState } from "react";
 import { Facebook, Instagram, Linkedin, Twitter, Web } from "./socialHandles";
+import axios from "axios";
 
 const BottomNav = ({business})=>{
     const data = {
+        name: `${business.businessname}`,
+        logo: `${business.logo}`,
         phone: `${business.phone}`,
         email: `${business.userid.email}`,
-        website: `${business.website}`,
+        website: `${business.website}`
     }
     console.log(data)
     const SendMessage = ()=>{
@@ -31,8 +35,25 @@ const BottomNav = ({business})=>{
         window.open(link, "_blank");
     };
 
-    const contact =()=>{
+    const contact = async ()=>{
+      const config = {
+        headers: {
+          "Content-type" : "application/json"
+        }
+      }
+      try{
+        const res = await axios.post("/api/savecontact",data,config);
+        const downloadTxtFile = () => {
+          const blob = new Blob([res.data], {
+            type: "text/vcard;charset=utf-8",
+          });
+          FileSaver.saveAs(blob,`${data.name}`); 
+        };
+        downloadTxtFile(); 
 
+      }catch(err){
+        console.log(err);
+      }
     }
 
     const [show, setShow] = useState(false);
