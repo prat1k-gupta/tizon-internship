@@ -87,7 +87,7 @@ export const UploadInfo = ({formData,setFormData,multipleArr,setMultipleArr}) =>
             placeholder="choose file"
           />
           {uploadStatus ? 
-          <div className="mb-4">
+          <div className="mb-4 mt-2">
           <ProgressBar striped now={uploadStatus} label={`${uploadStatus/25}/4`} />
           </div>: 
           <div></div>}

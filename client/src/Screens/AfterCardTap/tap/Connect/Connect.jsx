@@ -46,8 +46,9 @@ export const Connect = ({ id }) => {
         {error && <ErrorMessage error={error} />}
         {success && <SuccessMessage message={success} />} */}
         <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Name*</Form.Label>
           <Form.Control
+            required
             name="name"
             type="text"
             onChange={handleChange}
@@ -56,8 +57,9 @@ export const Connect = ({ id }) => {
           />
         </Form.Group>
         <Form.Group className="mb-3 input" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Email address*</Form.Label>
           <Form.Control
+            required
             name="email"
             type="email"
             onChange={handleChange}
@@ -67,7 +69,7 @@ export const Connect = ({ id }) => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicBusiness">
-          <Form.Label>Business Name</Form.Label>
+          <Form.Label>Business Name (optional)</Form.Label>
           <Form.Control
             name="businessname"
             type="text"
@@ -77,8 +79,9 @@ export const Connect = ({ id }) => {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPhone">
-          <Form.Label>Phone</Form.Label>
+          <Form.Label>Phone*</Form.Label>
           <Form.Control
+            required
             name="phone"
             type="tel"
             onChange={handleChange}
@@ -87,7 +90,7 @@ export const Connect = ({ id }) => {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicWebsite">
-          <Form.Label>website</Form.Label>
+          <Form.Label>Website (optional)</Form.Label>
           <Form.Control
             name="website"
             type="text"
@@ -97,7 +100,7 @@ export const Connect = ({ id }) => {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicWebsite">
-          <Form.Label>instagram</Form.Label>
+          <Form.Label>instagram (optional)</Form.Label>
           <Form.Control
             name="instagram"
             type="text"

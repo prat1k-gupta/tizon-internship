@@ -7,7 +7,7 @@ import { StaticImage } from "./tap/StaticImage";
 const CardTap = () => {
     const {setShowNav} = useAuth(); 
     const {id} = useParams(); 
-    console.log(id)
+    // console.log(id)
     if(id){
         setShowNav(false)
     }
