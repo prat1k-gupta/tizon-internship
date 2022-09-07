@@ -2,20 +2,20 @@
 //dot env port
 //home route "server is running"
 const express = require("express");
-const stats = require("./data/stats");
+const stats = require("./server/data/stats");
 const jwt = require("jsonwebtoken")
-const connectDB = require("./config/connectDB");
+const connectDB = require("./server/config/connectDB");
 const vCardJs = require('vcards-js')
 require("dotenv").config();
 // console.log(connectDB);
-const statsRoutes = require('./routes/statsRoutes')
-const userRoutes = require("./routes/userRoutes");
-const userStats = require("./Models/statsSchema");
-const business = require("./Models/businessSchema");
+const statsRoutes = require('./server/routes/statsRoutes')
+const userRoutes = require("./server/routes/userRoutes");
+const userStats = require("./server/Models/statsSchema");
+const business = require("./server/Models/businessSchema");
 
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const authenticate = require("./middlewares/authenticate");
+const authenticate = require("./server/middlewares/authenticate");
 const app = express();
 const vcard = vCardJs(); 
 
@@ -87,6 +87,19 @@ app.post("/api/savecontact",(req,res)=>{
 //   }
 // })
 //server running here
+// ----------deployment---------------------------
+
+if(process.env.NODE_ENV === "production"){
+  console.log(path.join(__dirname, "client", "build", "index.html"))
+  app.use(express.static(path.join(__dirname, "client", "build")))
+
+  app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+  })
+}
+
+// ----------deployment---------------------------
+
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}!!`);
