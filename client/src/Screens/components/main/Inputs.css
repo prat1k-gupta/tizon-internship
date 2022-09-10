@@ -34,6 +34,9 @@
     border: none;
     font-size: medium;
 }
+.activeButtonInput:active{
+    opacity: 0.7;
+}
 .ButtonInput{
     display: block;
     min-width: 150px;

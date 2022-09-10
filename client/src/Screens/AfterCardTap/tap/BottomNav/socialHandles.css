@@ -15,17 +15,35 @@
 }
 .facebook{
     background-color: #4267B2;
+    border-radius: 10px;
 }
 .linkedin{
     background-color: #0A66C2;
+    border-radius: 10px;
 }
 .instagram{
     background: linear-gradient(45deg, #8a3ab9, #bc2a8d, #e95950, #fccc63);
     background-repeat: no-repeat;
+    border-radius: 10px;
 }
 .twitter{
     background-color: #1DA1F2;
+    border-radius: 10px;
 }
 .web{
     background-color: var(--purple);
+    border-radius: 10px;
+}
+.whatsapp{
+    background-color: #25D366;
+    border-radius: 10px;
+}
+
+.whatsapp:active,
+.facebook:active,
+.instagram:active,
+.linkedin:active,
+.twitter:active,
+.web:active{
+    opacity: 0.7;
 }
