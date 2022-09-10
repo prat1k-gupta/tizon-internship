@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../../../AuthContext/AuthContext";
-import { Connect } from "./Connect/Connect";
 import { Gallery } from "./Gallery";
+import { Share } from "./Share/Share";
 import "./TabGroup.css";
 import { VideoGallery } from "./VideoGallery/VideoGallery";
 
@@ -28,11 +28,11 @@ const TabGroup = ()=>{
                     Videos
                 </div>
                 <div 
-                    // className={toggleState === 3 ? "tab active-tab" : "tab"}
-                    className="disabled-tab"
-                    // onClick={()=>toggleTab(3)}
+                    className={toggleState === 3 ? "tab active-tab" : "tab"}
+                    // className="disabled-tab"
+                    onClick={()=>toggleTab(3)}
                 >
-                    Connect
+                    Share
                 </div>
             </div>
             <div className="content-tabs">
@@ -49,7 +49,7 @@ const TabGroup = ()=>{
                 <div 
                     className={toggleState === 3 ? "content active-content" : "content"}
                 >
-                    <Connect/>
+                    <Share />
                 </div>
             </div>
         </div>

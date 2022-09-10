@@ -62,7 +62,7 @@ const BottomNav = ({business})=>{
       <>
         {show && (
           <div className="popup-overlay">
-            <div className="pop">
+            <div className={show? "pop up" : "pop"}>
               <h1>#Socials</h1>
               <hr />
               <Facebook business={business} />

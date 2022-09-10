@@ -40,19 +40,26 @@
   height: 100%;
   top: 50%;
   left: 50%;
-  padding: 20px;
+  /* padding: 20px; */
   transform: translate(-50%, -50%);
 }
 .pop{
-  position: relative;
+  position: absolute;
+  bottom: -300px;
   width: 100%;
   height: auto;
   background-color: var(--grey);
   box-shadow: 0 4px 15px #00000075;
-  border-radius: 10px;
-  padding: 10px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 15px;
   text-align: center;
+  transition: all 300ms ease;
 }
+.pop.up{
+  bottom: 0;
+}
+
 .dismiss{
   position: relative;
   font-size: 1rem;
