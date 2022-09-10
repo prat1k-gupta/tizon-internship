@@ -12,6 +12,7 @@
     "browser-image-compression": "^2.0.0",
     "file-saver": "^2.0.5",
     "get-youtube-id": "^1.0.1",
+    "qrcode": "^1.5.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
